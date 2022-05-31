@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import "./Navbar.css"
 
 import { UserContext } from './UserContextProvider'
 
-import logo from "../icons/logo.ico";
+import logo from "../icons/aemclogo.png";
 import userlogo from "../icons/user.ico";
 
 const RenderMenu = () => {
@@ -14,7 +14,7 @@ const RenderMenu = () => {
       <nav className="navbar navbar-expand-lg navbar-light ">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-            <img className="logo" src={logo} height="50px" width="120px" />
+            <img class="logo" src={logo}/>
           </NavLink>
           <button
             className="navbar-toggler"

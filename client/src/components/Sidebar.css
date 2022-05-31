@@ -21,7 +21,7 @@ nav.main-menu.expanded {
   background: #11101d;
   border-right: 1px solid #69696b;
   position: absolute;
-  top: 0;
+  top: 50px;
   bottom: 0;
   height: auto;
   left: 0;
