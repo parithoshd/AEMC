@@ -1,0 +1,53 @@
+GET http://localhost:5000/
+
+###
+
+GET http://localhost:5000/courses
+
+
+POST http://localhost:5000/newcourse
+Content-Type: application/json
+
+{
+    "courseName": "Intro to CPP",
+    "duration": "4 months",
+    "cost": 799,
+    "courseDescription": "CPP Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi atque consectetur ullam aut pariatur suscipit, officiis nam possimus cupiditate tempora! At ducimus aliquam dolorum ipsa odio, mollitia provident non maxime.",
+    "listOfContents": [
+        {
+        "contentName": "Basics - CPP",
+        "video_list": ["Basics 1", "Basics 2", "Basics 3", "Basics 4", "Basics 5", "Basics 6"]
+        },
+        {
+        "contentName": "Advanced - CPP",
+        "video_list": ["Advanced 1", "Advanced 2", "Advanced 3", "Advanced 4", "Advanced 5", "Advanced 6"]
+        },
+        {
+        "contentName": "Application - CPP",
+        "video_list": ["Application 1", "Application 2", "Application 3", "Application 4", "Application 5", "Application 6"]
+        }
+    ],
+    "exam": [
+        {
+            "question": "Question 1",
+            "choices": ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+            "answer": "Choice 3"
+        },
+        {
+            "question": "Question 2",
+            "choices": ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+            "answer": "Choice 4"
+        },
+        {
+            "question": "Question 3",
+            "choices": ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+            "answer": "Choice 1"
+        },
+        {
+            "question": "Question 4",
+            "choices": ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+            "answer": "Choice 2"
+        }
+
+    ]
+} 
