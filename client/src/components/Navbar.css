@@ -10,7 +10,8 @@
 }
 
 ul.navbar-nav li.nav-item .nav-link:hover{
-  color: #41bbac;;
+  /* color: #41bbac; */
+color: var(--secondaryColor);
 }
 
 .navbar-brand{

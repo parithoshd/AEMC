@@ -1,7 +1,7 @@
 const initialState = [];
 
 export const initializer = (initialValue = initialState) =>
-  JSON.parse(localStorage.getItem("state")) || initialValue;
+  JSON.parse(sessionStorage.getItem("state")) || initialValue;
 
 export const reducer = (state, action) => {
   if (action.type === "USER") {

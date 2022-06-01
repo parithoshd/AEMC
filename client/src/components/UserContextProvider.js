@@ -8,7 +8,7 @@ export const UserProvider = ({ children }) => {
 
 
   useEffect(() => {
-    localStorage.setItem("state", JSON.stringify(state));
+    sessionStorage.setItem("state", JSON.stringify(state));
   }, [state]);
 
   return (
