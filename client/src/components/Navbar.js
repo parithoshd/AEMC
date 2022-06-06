@@ -14,7 +14,7 @@ const RenderMenu = () => {
       <nav className="navbar navbar-expand-lg navbar-light ">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-            <img class="logo" src={logo}/>
+            <img className="logo" src={logo} />
           </NavLink>
           <button
             className="navbar-toggler"
@@ -80,15 +80,6 @@ const ToggleUser = () => {
   if (!state) {
     return (
       <>
-        <li className="nav-item">
-          <NavLink
-            className="nav-link active"
-            aria-current="page"
-            to="/register"
-          >
-            Register
-          </NavLink>
-        </li>
 
         <li className="nav-item">
           <NavLink className="nav-link active" aria-current="page" to="/login">
@@ -118,7 +109,7 @@ const ToggleUser = () => {
           </NavLink>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <NavLink className="dropdown-item" to="/about">
+              <NavLink className="dropdown-item" to="/userdetails">
                 User Details
               </NavLink>
             </li>

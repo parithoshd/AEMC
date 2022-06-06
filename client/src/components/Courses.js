@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import "./Course.css"
+import "./Courses.css"
 import Onecourse from './Onecourse'
 
 import WebDev from "./images/Web Dev.jpg"
@@ -80,7 +80,7 @@ const Courses = () => {
                                         <h6>Duration: {course.duration}</h6>
                                         <h6>Cost: Rs {course.cost}</h6>
                                     </div>
-                                    <button className='btn button-27 px-4 mx-3 my-2' onClick={handleSubmit}>Enroll</button>
+                                    <button className='enroll-btn btn px-4 mx-3 my-2' onClick={handleSubmit}>Enroll</button>
                                 </div>
                             </div>
                         </div>

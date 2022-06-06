@@ -5,8 +5,8 @@ import homeimg from "./images/home1.jpg";
 const Home = () => {
   return (
     <>
-      <div class="wrapper">
-        <div class="container">
+      <div className="wrapper">
+        <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6 col-md-12">
               <div className="banner-wrapper-content">
@@ -19,11 +19,10 @@ const Home = () => {
                   which further grabs engagement.
                 </p>
 
-                <a routerlink="/contact" class="default-btn" href="/contact">
-                  <button type="button" class="btn btn-primary btn-lg">
-                    <i class="fi fi-rr-user"></i> Get Started Now  
+                <a routerlink="/contact" className="default-btn" href="/contact">
+                  <button type="button" className="btn btn-primary btn-lg">
+                    <i className="fi fi-rr-user"></i> Get Started Now
                   </button>
-
                 </a>
               </div>
             </div>
@@ -32,6 +31,51 @@ const Home = () => {
                 <img src={homeimg} alt="image"></img>
               </div>
             </div>
+          </div>
+          <div className="banner-inner-area">
+            <div className="row justify-content-center">
+              <div className="col-lg-4 col-md-6 col-sm-6 px-1">
+                <div className="single-banner-box">
+                  <div className="icon">
+                    <i className="fi fi-rr-globe"></i>
+                  </div>
+                  <h3> Online Courses</h3>
+                  <p>
+                    We are now online with Learning Management System directly
+                    to your home!
+                  </p>
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-6 col-sm-6 px-1">
+                <div className="single-banner-box">
+                  <div className="icon">
+                    <i className="fi fi-rr-users-alt"></i>
+                  </div>
+                  <h3> Expert Teachers</h3>
+                  <p>
+                    Our trainers know how to train you quickly, efficiently, and
+                    at your own pace!
+                  </p>
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-6 col-sm-6 px-1">
+                <div className="single-banner-box">
+                  <div className="icon">
+                    <i className="fi fi-rr-infinity"></i>
+                  </div>
+                  <h3> Lifetime Access</h3>
+                  <p>
+                    Get our subscription for Professional Coder Certification
+                    Training and get lifetime access!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container">
+          <div className="section-title">
+            <h2>About us</h2>
           </div>
         </div>
       </div>

@@ -1,0 +1,15 @@
+.Course-BG {
+  background-color: white;
+}
+
+.enroll-btn {
+  background-color: #41bbac;
+  border-color: #41bbac;
+  color: white;
+}
+
+.enroll-btn:hover {
+  background-color: #221638;
+  transition: 0.5s;
+  color: white;
+}

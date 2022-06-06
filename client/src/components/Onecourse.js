@@ -1,74 +1,122 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
-import { Routes, Route, useNavigate } from 'react-router-dom'
-import WebDev from "./images/Web Dev.jpg"
 import './Onecourse.css'
-import Sidebar from './Sidebar'
-import Content from './Content'
-import Login from './Login'
+
+import Coursecontent from "./Coursecontent"
+import Coursedescription from './Coursedescription'
+import Coursenotes from './Coursenotes'
+import Coursetest from './Coursetest'
+// import Sidebar from "./Sidebar"
 
 const Onecourse = (props) => {
+    const [activeTab, setActiveTab] = useState("Description")
+    const [mini, setMini] = useState(true)
+    // const [mainMenuExpanded, setMainMenuExpanded] = useState(false)
+    // const [mainDiv, setMainDiv] = useState(false)
 
-    const navigate = useNavigate()
+    // const toggleSidebar = () => {
+    //     if (mini) {
+    //         console.log("opening sidebar");
+    //         setMainMenuExpanded(true)
+    //         setMainDiv(true)
+    //         setMini(false)
+    //     } else {
+    //         console.log("closing sidebar");
+    //         setMainMenuExpanded(false)
+    //         setMainDiv(false)
+    //         setMini(true)
+    //     }
+    // }
 
-    const [onecourseData, setOneCourseData] = useState({
-        courseName: "", duration: "", cost: "", courseDescription: "",
-        listOfContents: [], exam: []
-    })
+    const Sidebar = () => {
 
-    const callOnecoursePage = async () => {
-        try {
-            const course_id = (window.location.href).split("/")[4]
-            console.log(course_id);
-            const response = await fetch(`/courses/${course_id}`, {
-                method: "GET",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-                credentials: "include",
-            });
+        return (
+            <>
 
-            const data = await response.json();
-            setOneCourseData(data);
-            console.log(onecourseData);
+                <nav className="main-menu">
+                    <ul>
 
-        } catch (err) {
-            console.log(err)
-            navigate('/courses')
-        }
+                        {/* <li className="" onClick={() => setActiveTab("Description")}>
+                            <a href="#" >
+                                <i className='bx bxs-book-content fa-2x'></i>
+                                Description
+                            </a>
+                        </li>
+
+                        <li className="" onClick={() => setActiveTab("Content")}>
+                            <a href="#">
+                                <i className='bx bxs-notepad fa-2x' ></i>
+                                Content
+                            </a>
+                        </li>
+
+                        <li className="" onClick={() => setActiveTab("Notes")}>
+                            <a href="#">
+                                <i className='bx bxs-file-doc fa-2x'></i>
+                                Notes
+                            </a>
+                        </li>
+
+                        <li className="" onClick={() => setActiveTab("Test")}>
+                            <a href="#">
+                                <i className='bx bxs-edit-alt fa-2x'></i>
+                                Test
+                            </a>
+
+                        </li> */}
+
+                        <li className="" onClick={() => setActiveTab("Description")}>
+                            <button className='li-btn d-flex'>
+                                <i className='bx bxs-book-content fa-2x'></i>
+                                Description
+                            </button>
+
+                        </li>
+                        <li className="" onClick={() => setActiveTab("Content")}>
+                            <button className='li-btn d-flex'>
+                                <i className='bx bxs-notepad fa-2x' ></i>
+                                Content
+                            </button>
+
+                        </li>
+                        <li className="" onClick={() => setActiveTab("Notes")}>
+                            <button className='li-btn d-flex'>
+                                <i className='bx bxs-file-doc fa-2x'></i>
+                                Notes
+                            </button>
+
+                        </li>
+                        <li className="" onClick={() => setActiveTab("Test")}>
+                            <button className='li-btn d-flex'>
+                                <i className='bx bxs-edit-alt fa-2x'></i>
+                                Test
+                            </button>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+
+            </>
+        )
     }
-
-
-
-
-    useEffect(() => {
-        callOnecoursePage()
-    }, [])
 
     return (
         <>
+            <div className='Onecourse'>
+                <Sidebar />
+                {/*   */}
 
-            <Sidebar />
-            {/* <Content /> */}
-            <div className='course-main'>
-                <div className='d-flex'>
-                    <div className='course-img'>
-                        <img src={WebDev} />
-                    </div>
-                    <div className='course-header'>
-                        <h1 className='course-name'>{onecourseData.courseName}</h1>
-                        <h4>Price: {onecourseData.cost}</h4>
-                        <h6>Duration: {onecourseData.duration}</h6>
-                        <button className='btn px-4 mx-3 my-2 button-27' onClick={() => window.open("http://localhost:3000")}>Enroll</button>
-                    </div>
-                </div>
-                <div>
-                    <p className='course-content mb-5 py-5'>{onecourseData.courseDescription}</p>
+                <div className="component-grp">
+                    {activeTab === "Description" && <Coursedescription />}
+                    {activeTab === "Content" && <Coursecontent />}
+                    {activeTab === "Notes" && <Coursenotes />}
+                    {activeTab === "Test" && <Coursetest />}
                 </div>
             </div>
-
-
         </>
     )
 }

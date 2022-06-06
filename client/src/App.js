@@ -9,10 +9,11 @@ import Courses from './components/Courses'
 import Register from './components/Register'
 import Login from './components/Login'
 import Logout from './components/Logout'
+import Userdetails from './components/Userdetails'
 import Error from './components/Error'
 import Onecourse from './components/Onecourse'
 import Sidebar from './components/Sidebar'
-import Content from './components/Content'
+import Coursecontent from './components/Coursecontent'
 import Payment from './components/Payment'
 
 
@@ -33,11 +34,12 @@ const App = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/courses' element={<Courses />} />
         <Route path='/courses/sidebar' element={<Sidebar />} />
-        <Route path='/courses/content/:id' element={<Content />} />
+        <Route path='/courses/content/:id' element={<Coursecontent />} />
         <Route path='/courses/:id' element={<Onecourse />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/logout' element={<Logout />} />
+        <Route path='/userdetails' element={<Userdetails />} />
         <Route path='/payment' element={<Payment />} />
         <Route path='/*' element={<Error />} />
       </Routes>

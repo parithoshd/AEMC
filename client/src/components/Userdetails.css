@@ -1,0 +1,20 @@
+.enrolled-course-msg {
+  width: 50%;
+  padding: 15px;
+  margin: 5px auto;
+  font-size: 14px;
+  background-color: #f8d7da;
+  color: #842029;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.user-name {
+  border: 1px solid black;
+  padding: 50px;
+}
+
+.user-email {
+  border: 1px solid black;
+  padding: 50px;
+}

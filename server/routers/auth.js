@@ -16,7 +16,11 @@ router.get('/', (req, res) => {
 })
 
 // About Us Route
-router.get('/about', Authenticate, (req, res) => {
+router.get('/about', (req, res) => {
+    res.send("About Us Page")
+})
+
+router.get('/userdetails', Authenticate, (req, res) => {
     res.send(req.loggedInUser)
 })
 
@@ -34,7 +38,13 @@ router.get('/courses', async (req, res) => {
 
 })
 
-router.get('/courses/:id', async (req, res) => {
+router.get('/courses/description/:id', async (req, res) => {
+    let newObject = await Course.findOne({ _id: req.params.id })
+    req.newObject = newObject
+    res.send(req.newObject)
+})
+
+router.get('/courses/test/:id', async (req, res) => {
     let newObject = await Course.findOne({ _id: req.params.id })
     req.newObject = newObject
     res.send(req.newObject)
@@ -51,7 +61,7 @@ router.get('/logout', (req, res) => {
 
 // Registration Route
 router.post('/register', async (req, res) => {
-    const { firstName, lastName, email, password } = req.body
+    const { firstName, lastName, email, password, enrolledCourses } = req.body
 
     if (!firstName || !lastName || !email || !password) {
         return res.status(422).json({ error: "Please fill all the data" })
@@ -63,7 +73,7 @@ router.post('/register', async (req, res) => {
             return res.status(422).json({ error: "User already Exists" })
         }
 
-        const newUser = new User({ firstName, lastName, email, password })
+        const newUser = new User({ firstName, lastName, email, password, enrolledCourses })
 
         const userRegister = await newUser.save()
         if (userRegister) {

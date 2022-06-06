@@ -1,0 +1,133 @@
+.test {
+  text-align: center;
+  margin: auto;
+}
+
+.question-card {
+  /* Center the div  */
+  margin: 0 auto;
+
+  /* Dimensions  */
+  width: 30%; /* Can be in percentage also. */
+  height: auto;
+
+  /* Visual  */
+  background-color: gray;
+  padding: 16px;
+  border-radius: 16px;
+  color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.options {
+  list-style: none;
+  margin: 10px 20px;
+}
+
+.option {
+  margin-top: 8px;
+  background-color: #d3d3d3;
+  padding: 16px;
+  border: 3px solid white;
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  color: rgba(42, 39, 39, 0.633);
+}
+
+.option:hover {
+  background-color: #a9a9a9;
+  color: black;
+  transition: 0.3s;
+}
+
+.question-text {
+  color: darkblue;
+  font-size: 24px;
+}
+
+/* Final Results  */
+
+.final-results {
+  /* Center the div  */
+  margin: 0 auto;
+
+  /* Dimensions  */
+  width: 50%; /* Can be in percentage also. */
+  height: auto;
+  margin-top: 64px;
+
+  /* Visual  */
+  background-color: gray;
+  padding: 16px;
+  border-radius: 16px;
+  color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.instructions {
+  margin: 20px 100px;
+  padding: 30px;
+  text-align: justify;
+}
+
+.instructions li {
+  padding: 4px;
+}
+
+.test-strt {
+  color: red;
+  background-color: white;
+  border: 1px solid red;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 24px;
+}
+
+.test-strt:hover {
+  background-color: red;
+  color: white;
+  transition: 0.7s;
+}
+
+.next-question {
+  background-color: rgb(204, 33, 33);
+  border: none;
+  color: rgb(123, 114, 114);
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 24px;
+}
+
+.next-question:hover {
+  background-color: red;
+  color: white;
+  transition: 0.5s;
+}
+
+.disable-choice {
+  pointer-events: none;
+  cursor: default;
+}
+
+.custom-btn {
+  background-color: #41bbac;
+  border-color: #41bbac;
+  color: white;
+}
+
+.custom-btn:hover {
+  background-color: #221638;
+  transition: 0.5s;
+  color: white;
+}

@@ -24,8 +24,15 @@ const userSchema = new mongoose.Schema({
         enrolledCourseID: {
             type: String
         },
-        result: {
+        enrolledCourseName: {
+            type: String
+        },
+        grade: {
             type: Number
+        },
+        enrolledOn: {
+            type: Date,
+            default: Date.now
         }
     }],
     tokens: [

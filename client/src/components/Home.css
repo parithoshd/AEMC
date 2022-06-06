@@ -1,9 +1,16 @@
 @import url("https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css");
+@import url("https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css");
+
 .wrapper {
-  margin-right: auto; 
-  margin-left: auto; 
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  margin-right: auto;
+  margin-left: auto;
   padding-top: 40px;
   font-family: var(--fontFamily);
+  background-color: #fff;
+  z-index: 1;
 }
 .wrapper p {
   color: var(--optionalColor);
@@ -12,6 +19,10 @@
   font-size: var(--fontSize);
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
+}
+
+.container {
+  max-width: 1230px;
 }
 
 .banner-wrapper-content h1 {
@@ -28,17 +39,106 @@
   height: auto;
 }
 
-.btn-lg{
+.btn-lg {
   background-color: #41bbac;
   border-color: #41bbac;
   color: white;
 }
 .btn-lg:hover {
   background-color: black;
-  transition: .5s;
+  transition: 0.5s;
 }
 
+.banner-inner-area {
+  margin-top: 50px;
+  border-radius: 10px;
+}
 
+.banner-inner-area .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.banner-inner-area .row .col-lg-4 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.banner-inner-area .row .col-lg-4:first-child .single-banner-box {
+  border-radius: 10px 0 0 10px;
+}
+.banner-inner-area .row .col-lg-4:last-child .single-banner-box {
+  border-radius: 0px 10px 10px 0px;
+}
+
+.single-banner-box {
+  border-right: 1px solid #fff;
+  background-color: #ebf1eb;
+  padding: 30px 30px 30px 90px;
+  position: relative;
+}
+
+.single-banner-box .icon {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 1;
+  transition: var(--transition);
+  font-size: 40px;
+}
+
+.single-banner-box:hover .icon {
+  color: var(--secondaryColor);
+}
+
+.single-banner-box h3 {
+  margin-bottom: 5px;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.single-banner-box p {
+  margin-bottom: 0px;
+}
+
+.section-title {
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 55px;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1355px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+  }
+}
 @media only screen and (max-width: 767px) {
   .wrapper {
     padding-top: 100px;

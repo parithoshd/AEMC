@@ -1,0 +1,22 @@
+.outer-div-content {
+  border: 2px solid black;
+  width: 250px;
+}
+
+.video-header {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.video-names:hover {
+  background-color: rgb(204, 225, 227);
+  color: rgb(67, 82, 84);
+  cursor: pointer;
+}
+
+.actual-video {
+  height: 500px;
+  width: 1100px;
+  margin: 10px;
+  padding: 10px;
+}

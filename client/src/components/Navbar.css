@@ -1,38 +1,49 @@
-.logo{
+.navbar {
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  z-index: 9999;
+}
+
+.add-shadow {
+  box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.09);
+}
+
+.logo {
   max-width: 100%;
   height: auto;
   margin-left: 25px;
 }
-.nav-item{
+.nav-item {
   font-size: 17px;
   font-weight: bold;
   padding-right: 10px;
 }
 
-ul.navbar-nav li.nav-item .nav-link:hover{
+ul.navbar-nav li.nav-item .nav-link:hover {
   /* color: #41bbac; */
-color: var(--secondaryColor);
+  color: var(--secondaryColor);
 }
 
-.navbar-brand{
+.navbar-brand {
   max-width: 14.5%;
   margin-top: -8px;
 }
-@media only screen and (max-width: 992px){
-  .logo{
-      max-width: 100px;
-      margin-left: 5px;
+@media only screen and (max-width: 992px) {
+  .logo {
+    max-width: 100px;
+    margin-left: 5px;
   }
+}
+
+@media only screen and (max-width: 992px) {
+  .navbar-nav {
+    background-color: #f4f4f4;
   }
+}
 
-  @media only screen and (max-width: 992px){
-      .navbar-nav{
-          background-color: #f4f4f4;;
-      }
-      }
-
-      @media only screen and (max-width: 992px){
-          .navbar-brand{
-              margin-top: 0px;
-          }
-          }
+@media only screen and (max-width: 992px) {
+  .navbar-brand {
+    margin-top: 0px;
+  }
+}
