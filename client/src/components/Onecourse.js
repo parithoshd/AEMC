@@ -11,83 +11,55 @@ import Coursetest from './Coursetest'
 
 const Onecourse = (props) => {
     const [activeTab, setActiveTab] = useState("Description")
-    const [mini, setMini] = useState(true)
-    // const [mainMenuExpanded, setMainMenuExpanded] = useState(false)
-    // const [mainDiv, setMainDiv] = useState(false)
+    // const [mini, setMini] = useState(true)
 
-    // const toggleSidebar = () => {
-    //     if (mini) {
-    //         console.log("opening sidebar");
-    //         setMainMenuExpanded(true)
-    //         setMainDiv(true)
-    //         setMini(false)
-    //     } else {
-    //         console.log("closing sidebar");
-    //         setMainMenuExpanded(false)
-    //         setMainDiv(false)
-    //         setMini(true)
-    //     }
-    // }
+var mini = true;
+
+function toggleSidebar() {
+if (mini) {
+console.log('opening sidebar');
+// document.getElementById('mySidebar').style.width = '180px';
+document.getElementById('main').style.marginLeft = '250px';
+mini = false;
+} else {
+console.log('closing sidebar');
+// document.getElementById('mySidebar').style.width = '200px';
+document.getElementById('main').style.marginLeft = '20px';
+mini = true;
+ }
+}
+    
 
     const Sidebar = () => {
 
         return (
             <>
 
-                <nav className="main-menu">
+                <nav className="main-menu" id='mySidebar' onMouseOver={()=>toggleSidebar()} onMouseOut={()=>toggleSidebar()}>
                     <ul>
 
-                        {/* <li className="" onClick={() => setActiveTab("Description")}>
-                            <a href="#" >
-                                <i className='bx bxs-book-content fa-2x'></i>
-                                Description
-                            </a>
-                        </li>
-
-                        <li className="" onClick={() => setActiveTab("Content")}>
-                            <a href="#">
-                                <i className='bx bxs-notepad fa-2x' ></i>
-                                Content
-                            </a>
-                        </li>
-
-                        <li className="" onClick={() => setActiveTab("Notes")}>
-                            <a href="#">
-                                <i className='bx bxs-file-doc fa-2x'></i>
-                                Notes
-                            </a>
-                        </li>
-
-                        <li className="" onClick={() => setActiveTab("Test")}>
-                            <a href="#">
-                                <i className='bx bxs-edit-alt fa-2x'></i>
-                                Test
-                            </a>
-
-                        </li> */}
-
-                        <li className="" onClick={() => setActiveTab("Description")}>
+                        <li className="" onClick={() =>{ setActiveTab("Description");document.getElementById('main').style.marginLeft = '20px'}}>
                             <button className='li-btn d-flex'>
                                 <i className='bx bxs-book-content fa-2x'></i>
-                                Description
+                                 Description
                             </button>
 
                         </li>
-                        <li className="" onClick={() => setActiveTab("Content")}>
+                        <li className="" onClick={() =>{ setActiveTab("Content");document.getElementById('main').style.marginLeft = '20px'}}>
                             <button className='li-btn d-flex'>
                                 <i className='bx bxs-notepad fa-2x' ></i>
                                 Content
                             </button>
 
                         </li>
-                        <li className="" onClick={() => setActiveTab("Notes")}>
+                        <li className="" onClick={() =>{ setActiveTab("Notes");document.getElementById('main').style.marginLeft = '20px'}}>
                             <button className='li-btn d-flex'>
                                 <i className='bx bxs-file-doc fa-2x'></i>
                                 Notes
                             </button>
 
                         </li>
-                        <li className="" onClick={() => setActiveTab("Test")}>
+                        <li className="" onClick={() =>{ setActiveTab("Test");document.getElementById('main').style.marginLeft = '20px'}}>
                             <button className='li-btn d-flex'>
                                 <i className='bx bxs-edit-alt fa-2x'></i>
                                 Test
@@ -106,9 +78,9 @@ const Onecourse = (props) => {
 
     return (
         <>
-            <div className='Onecourse'>
+            <div id='main' className='Onecourse'>
                 <Sidebar />
-                {/*   */}
+                
 
                 <div className="component-grp">
                     {activeTab === "Description" && <Coursedescription />}

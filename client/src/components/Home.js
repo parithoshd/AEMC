@@ -34,7 +34,7 @@ const Home = () => {
           </div>
           <div className="banner-inner-area">
             <div className="row justify-content-center">
-              <div className="col-lg-4 col-md-6 col-sm-6 px-1">
+              <div className="col-lg-4 col-md-6 col-sm-6">
                 <div className="single-banner-box">
                   <div className="icon">
                     <i className="fi fi-rr-globe"></i>
@@ -46,7 +46,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-6 col-sm-6 px-1">
+              <div className="col-lg-4 col-md-6 col-sm-6">
                 <div className="single-banner-box">
                   <div className="icon">
                     <i className="fi fi-rr-users-alt"></i>
@@ -58,7 +58,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-6 col-sm-6 px-1">
+              <div className="col-lg-4 col-md-6 col-sm-6">
                 <div className="single-banner-box">
                   <div className="icon">
                     <i className="fi fi-rr-infinity"></i>
@@ -75,7 +75,7 @@ const Home = () => {
         </div>
         <div className="container">
           <div className="section-title">
-            <h2>About us</h2>
+            <h2 id="about">About us</h2>
           </div>
         </div>
       </div>
