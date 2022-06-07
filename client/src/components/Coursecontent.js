@@ -1,15 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 // import { NavLink } from 'react-router-dom'
 import "./Coursecontent.css"
+import Notloggedin from './Notloggedin';
+
+import { UserContext } from "./UserContextProvider";
 
 const Content = () => {
+    const { state, dispatch } = useContext(UserContext);
     return (
         <>
             <div className='d-flex'>
                 <Content_list />
-                <div className='flex-grow-1 m-3 border border-2'>
-                    <div className='actual-video border border-2'>VIDEO DIV</div>
-                </div>
+                {!state ? <Notloggedin /> :
+                    (
+                        <div className='flex-grow-1 m-3 border border-2'>
+                            <div className='actual-video border border-2'>VIDEO DIV</div>
+                        </div>
+                    )
+                }
             </div>
         </>
     )

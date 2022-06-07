@@ -8,14 +8,11 @@ import ML from "./images/ML.jpg"
 import clang from "./images/c.png"
 
 
-
 const Courses = () => {
-
     let thumbnails = [WebDev, ML, clang, ML]
 
     const navigate = useNavigate()
-
-
+    const [btnValue, setBtnValue] = useState("Enroll")
     const [courseData, setCourseData] = useState([{
         courseName: "", duration: "", cost: "", courseDescription: "",
         listOfContents: [], exam: []
@@ -34,6 +31,7 @@ const Courses = () => {
 
             const data = await response.json()
             setCourseData(data)
+            // console.log(courseData)
 
         } catch (err) {
             console.log(err)
@@ -50,14 +48,36 @@ const Courses = () => {
 
 
     const handleClick = (newCourse) => {
-        // console.log(newCourse);
         <Onecourse course={newCourse} />
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
 
-        window.open("http://localhost:3000/payment")
+    const PaymentProcessPage = async (courseID, courseName, paymentStatus) => {
+        const res = await fetch("/paymentProcess", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ enrolledCourseID: courseID, enrolledCourseName: courseName, paymentStatus: paymentStatus })
+        })
+
+        const data = await res.json()
+        // console.log(data)
+        if (res.status === 402 || !data) {
+            window.alert("Payment is not done LOL")
+        } else if (res.status === 401 || !data) {
+            window.alert("Please Log In to Enroll")
+        }
+        else {
+            console.log("Payment Processed Successfully");
+        }
+        // navigate("/")
+    }
+
+    const handleSubmit = (courseID, courseName, e) => {
+        e.preventDefault()
+        // window.open("http://localhost:3000/payment")
+        PaymentProcessPage(courseID, courseName, true)
 
     }
 
@@ -80,7 +100,7 @@ const Courses = () => {
                                         <h6>Duration: {course.duration}</h6>
                                         <h6>Cost: Rs {course.cost}</h6>
                                     </div>
-                                    <button className='enroll-btn btn px-4 mx-3 my-2' onClick={handleSubmit}>Enroll</button>
+                                    <button className='enroll-btn btn px-4 mx-3 my-2' onClick={(e) => handleSubmit(course._id, course.courseName, e)}>{btnValue}</button>
                                 </div>
                             </div>
                         </div>

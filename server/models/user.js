@@ -22,13 +22,16 @@ const userSchema = new mongoose.Schema({
     },
     enrolledCourses: [{
         enrolledCourseID: {
-            type: String
+            type: String,
+            default: "NA"
         },
         enrolledCourseName: {
-            type: String
+            type: String,
+            default: "NA"
         },
         grade: {
-            type: Number
+            type: Number,
+            default: 0
         },
         enrolledOn: {
             type: Date,

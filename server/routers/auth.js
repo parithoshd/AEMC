@@ -24,6 +24,24 @@ router.get('/userdetails', Authenticate, (req, res) => {
     res.send(req.loggedInUser)
 })
 
+router.post("/paymentProcess", Authenticate, async (req, res) => {
+    const { enrolledCourseID, enrolledCourseName, paymentStatus } = req.body
+    try {
+        if (paymentStatus) {
+            (req.loggedInUser).enrolledCourses = [...((req.loggedInUser).enrolledCourses), {
+                enrolledCourseID,
+                enrolledCourseName
+            }]
+            await ((req.loggedInUser).save())
+        } else {
+            res.status(402).json({ err: "Payment Unsuccessful" })
+        }
+    } catch (err) {
+        console.log(err)
+    }
+    res.send(req.body)
+})
+
 
 
 router.get('/courses', async (req, res) => {
