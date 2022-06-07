@@ -51,3 +51,9 @@
   background-color: #221638;
   transition: 0.5s;
 }
+
+.disable-btn {
+  pointer-events: none;
+  cursor: default;
+  background-color: #8dc4bd;
+}

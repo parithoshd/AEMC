@@ -37,8 +37,9 @@ const Coursetest = () => {
             });
 
             const data = await response.json();
+            console.log(data)
             setExamQuestions(data.exam)
-            // console.log(newexamQuestions)
+            console.log(examQuestions)
 
         } catch (err) {
             console.log(err)
@@ -60,7 +61,7 @@ const Coursetest = () => {
                 credentials: "include",
             });
             const data = await response.json();
-            console.log(data)
+            // console.log(data)
 
             if (data)
                 setEnrollAuth(true)
@@ -71,34 +72,14 @@ const Coursetest = () => {
         }
     }
 
-
-
-
     useEffect(() => {
         callEnrollAuthPage()
         callTestPage()
     }, [])
 
-
-    const Instructions = () => {
-        return (
-            <>
-                <h1>Test Instructions</h1>
-                <div className='instructions'>
-                    <li>The test consists of 10 questions.</li>
-                    <li>All the questions are mandatory.</li>
-                    <li>All the questions are Multiple Choice Questions.(MCQs)</li>
-                    <li>Each question has four options.</li>
-                    <li>Choose the correct answer among the four.</li>
-                    <li>The grade will be displayed after answering all the questions.</li>
-                    <li>You can attempt the test only once.</li>
-                    <li>DO NOT CLOSE THE WINDOW WHILE THE TEST IS GOING ON.</li>
-                    <li>DO NOT CHANGE TABS WHILE THE TEST IS GOING ON.</li>
-                </div>
-                <button className='test-strt' onClick={() => setInstructions(false)}>START THE TEST</button>
-            </>
-        )
-    }
+    // useEffect(() => {
+    //     // callEnrollAuthPage()
+    // }, [])
 
     const handleOptionClick = (e, actualAnswer) => {
         let answerColor;
@@ -133,57 +114,79 @@ const Coursetest = () => {
 
     }
 
+    const Instructions = () => {
+        return (
+            <>
+                <h1>Test Instructions</h1>
+                <div className='instructions'>
+                    <li>The test consists of 10 questions.</li>
+                    <li>All the questions are mandatory.</li>
+                    <li>All the questions are Multiple Choice Questions.(MCQs)</li>
+                    <li>Each question has four options.</li>
+                    <li>Choose the correct answer among the four.</li>
+                    <li>The grade will be displayed after answering all the questions.</li>
+                    <li>You can attempt the test only once.</li>
+                    <li>DO NOT CLOSE THE WINDOW WHILE THE TEST IS GOING ON.</li>
+                    <li>DO NOT CHANGE TABS WHILE THE TEST IS GOING ON.</li>
+                </div>
+                <button className='test-strt' onClick={() => setInstructions(false)}>START THE TEST</button>
+            </>
+        )
+    }
+
     const Test = () => {
-        <div className="test">
-            <h1>QUIZ</h1>
+        return (
+            <div className="test">
+                <h1>QUIZ</h1>
 
-            <h2>Score: {score}</h2>
+                <h2>Score: {score}</h2>
 
-            {showResults ? (
-                <div className="final-results">
-                    <h1>Final Results</h1>
-                    <h2>
-                        {score} out of {examQuestions.length} correct - (
-                        {(score / examQuestions.length) * 100}%)
-                    </h2>
-                    <button className='custom-btn btn px-4 mx-3 my-2' onClick={() => navigate('/')}>Go to Home Page</button>
-                </div>
-            ) : (
-                <div className="question-card">
-                    <h2>
-                        Question: {currentQuestion + 1} out of {examQuestions.length}
-                    </h2>
-                    <h3 className="question-text">
-                        {examQuestions[currentQuestion].question}
-                    </h3>
+                {showResults ? (
+                    <div className="final-results">
+                        <h1>Final Results</h1>
+                        <h2>
+                            {score} out of {examQuestions.length} correct - (
+                            {(score / examQuestions.length) * 100}%)
+                        </h2>
+                        <button className='custom-btn btn px-4 mx-3 my-2' onClick={() => navigate('/')}>Go to Home Page</button>
+                    </div>
+                ) : (
+                    <div className="question-card">
+                        <h2>
+                            Question: {currentQuestion + 1} out of {examQuestions.length}
+                        </h2>
+                        <h3 className="question-text">
+                            {examQuestions[currentQuestion].question}
+                        </h3>
 
-                    <ul className="options">
-                        {examQuestions[currentQuestion].choices.map((choice, index) => {
-                            return (
-                                <li
-                                    key={index}
-                                    className={"option " + (disableChoice && "disable-choice")}
-                                    id={choice}
-                                    onClick={(e) => handleOptionClick(e, examQuestions[currentQuestion].answer)}
-                                >
-                                    {choice}
-                                </li>
-                            );
-                        })}
-                    </ul>
-                    <button className={"next-question " + (disableBtn && "disable-choice")} onClick={() => handleNextQuestion(examQuestions[currentQuestion].answer)}>
-                        {buttonValue}
-                    </button>
-                </div>
-            )}
-        </div>
+                        <ul className="options">
+                            {examQuestions[currentQuestion].choices.map((choice, index) => {
+                                return (
+                                    <li
+                                        key={index}
+                                        className={"option " + (disableChoice && "disable-choice")}
+                                        id={choice}
+                                        onClick={(e) => handleOptionClick(e, examQuestions[currentQuestion].answer)}
+                                    >
+                                        {choice}
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                        <button className={"next-question " + (disableBtn && "disable-choice")} onClick={() => handleNextQuestion(examQuestions[currentQuestion].answer)}>
+                            {buttonValue}
+                        </button>
+                    </div>
+                )}
+            </div>
+        )
     }
 
 
     return (
         <>
             {!enrollAuth ? <Notenrolled /> :
-                (showInstructions ? <Instructions /> : <Test />)
+                showInstructions ? <Instructions /> : <Test />
             }
         </>
     );

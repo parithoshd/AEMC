@@ -52,34 +52,34 @@ const Courses = () => {
     }
 
 
-    const PaymentProcessPage = async (courseID, courseName, paymentStatus) => {
-        const res = await fetch("/paymentProcess", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ enrolledCourseID: courseID, enrolledCourseName: courseName, paymentStatus: paymentStatus })
-        })
+    // const PaymentProcessPage = async (courseID, courseName, paymentStatus) => {
+    //     const res = await fetch("/paymentProcess", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({ enrolledCourseID: courseID, enrolledCourseName: courseName, paymentStatus: paymentStatus })
+    //     })
 
-        const data = await res.json()
-        // console.log(data)
-        if (res.status === 402 || !data) {
-            window.alert("Payment is not done LOL")
-        } else if (res.status === 401 || !data) {
-            window.alert("Please Log In to Enroll")
-        }
-        else {
-            console.log("Payment Processed Successfully");
-        }
-        // navigate("/")
-    }
+    //     const data = await res.json()
+    //     // console.log(data)
+    //     if (res.status === 402 || !data) {
+    //         window.alert("Payment is not done LOL")
+    //     } else if (res.status === 401 || !data) {
+    //         window.alert("Please Log In to Enroll")
+    //     }
+    //     else {
+    //         console.log("Payment Processed Successfully");
+    //     }
+    //     // navigate("/")
+    // }
 
-    const handleSubmit = (courseID, courseName, e) => {
-        e.preventDefault()
-        // window.open("http://localhost:3000/payment")
-        PaymentProcessPage(courseID, courseName, true)
+    // const handleSubmit = (courseID, courseName, e) => {
+    //     e.preventDefault()
+    //     // window.open("http://localhost:3000/payment")
+    //     PaymentProcessPage(courseID, courseName, true)
 
-    }
+    // }
 
     return (
         <div className='Course-BG'>
@@ -96,11 +96,9 @@ const Courses = () => {
                                     <p className="card-text">{course.courseDescription.slice(0, 100).concat("...")}</p>
                                 </div>
                                 <div className="d-flex card-footer justify-content-around">
-                                    <div>
-                                        <h6>Duration: {course.duration}</h6>
-                                        <h6>Cost: Rs {course.cost}</h6>
-                                    </div>
-                                    <button className='enroll-btn btn px-4 mx-3 my-2' onClick={(e) => handleSubmit(course._id, course.courseName, e)}>{btnValue}</button>
+                                    <h6>DURATION: {course.duration}</h6>
+                                    <h6>COST: Rs {course.cost}</h6>
+                                    {/* <button className='enroll-btn btn px-4 mx-3 my-2' onClick={(e) => handleSubmit(course._id, course.courseName, e)}>{btnValue}</button> */}
                                 </div>
                             </div>
                         </div>

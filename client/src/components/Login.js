@@ -46,9 +46,9 @@ const Login = () => {
     } else {
       console.log("Login Successful");
       setStatus({ type: "success" });
-      setError("Login Successful! You will be redirected to home page.");
+      setError("Login Successful! You will be redirected to Courses page.");
       setTimeout(() => {
-        navigate("/");
+        navigate("/courses");
         dispatch({ type: "USER", payload: true });
         window.location.reload(false);
       }, 2000);

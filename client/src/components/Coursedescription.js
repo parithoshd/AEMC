@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import "./Coursedescription.css"
 import WebDev from "./images/Web Dev.jpg"
 
-const Coursedescription = () => {
+const Coursedescription = ({ btnValue }) => {
 
     const navigate = useNavigate()
 
@@ -37,11 +37,40 @@ const Coursedescription = () => {
     }
 
 
-
-
     useEffect(() => {
         callCourseDescriptionPage()
     }, [])
+
+    const PaymentProcessPage = async (courseID, courseName, paymentStatus) => {
+        const res = await fetch("/paymentProcess", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ enrolledCourseID: courseID, enrolledCourseName: courseName, paymentStatus: paymentStatus })
+        })
+
+        const data = await res.json()
+        // console.log(data)
+        if (res.status === 402 || !data) {
+            window.alert("Payment is not done LOL")
+        } else if (res.status === 401 || !data) {
+            window.alert("Please Log In to Enroll")
+        }
+        else {
+            console.log("Payment Processed Successfully");
+        }
+        // navigate("/")
+    }
+
+    const handleSubmit = (courseName, e) => {
+        e.preventDefault()
+        const courseID = (window.location.href).split("/")[4]
+        window.open("http://localhost:3000/payment")
+        PaymentProcessPage(courseID, courseName, true)
+
+    }
+
 
     return (
         <>
@@ -54,7 +83,9 @@ const Coursedescription = () => {
                         <h1 className='course-name'>{onecourseData.courseName}</h1>
                         <h4>Price: {onecourseData.cost}</h4>
                         <h6>Duration: {onecourseData.duration}</h6>
-                        <button className='px-4 mx-3 my-2 enroll-btn btn btn-primary btn-lg' onClick={() => window.open("http://localhost:3000")}>Enroll</button>
+                        {/* <button onClick={() => window.open("http://localhost:3000")}>Enroll</button> */}
+                        <button className={'px-4 mx-3 my-2 enroll-btn btn btn-primary btn-lg ' + (!btnValue && "disable-btn")} onClick={(e) => handleSubmit(onecourseData.courseName, e)}>Enroll</button>
+                        <div>{!btnValue && <h6 className='text-muted'>*Already enrolled for the course*</h6>}</div>
                     </div>
                 </div>
                 <div>

@@ -33,7 +33,7 @@ router.post("/paymentProcess", Authenticate, async (req, res) => {
                 enrolledCourseID,
                 enrolledCourseName
             }]
-            // await ((req.loggedInUser).save())
+            await ((req.loggedInUser).save())
         } else {
             res.status(402).json({ err: "Payment Unsuccessful" })
         }

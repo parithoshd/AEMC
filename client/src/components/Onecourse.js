@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import './Onecourse.css'
 
@@ -12,25 +13,58 @@ import { UserContext } from "./UserContextProvider";
 
 const Onecourse = (props) => {
     const [activeTab, setActiveTab] = useState("Description")
+    const [btnValue, setBtnValue] = useState(true)
     const { state, dispatch } = useContext(UserContext);
+    const navigate = useNavigate()
 
     var mini = true;
 
     function toggleSidebar() {
         if (mini) {
-            console.log('opening sidebar');
+            // console.log('opening sidebar');
             // document.getElementById('mySidebar').style.width = '180px';
             document.getElementById('main').style.marginLeft = '250px';
             document.getElementById('main').style.transition = '0.6s';
             mini = false;
         } else {
-            console.log('closing sidebar');
+            // console.log('closing sidebar');
             // document.getElementById('mySidebar').style.width = '200px';
             document.getElementById('main').style.marginLeft = '20px';
             document.getElementById('main').style.transition = '0.6s';
             mini = true;
         }
     }
+
+    const checkEnrollAuthPage = async () => {
+        try {
+            const course_id = (window.location.href).split("/")[4]
+            const response = await fetch(`/courses/enrollAuth/${course_id}`, {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+            });
+
+            const data = await response.json();
+            // console.log(data);
+            if (data) setBtnValue(false)
+
+        } catch (err) {
+            console.log(err)
+            navigate('/courses')
+        }
+    }
+
+
+
+
+    useEffect(() => {
+        if (state) {
+            checkEnrollAuthPage()
+        }
+    }, [])
 
 
 
@@ -90,7 +124,7 @@ const Onecourse = (props) => {
 
 
                 <div className="component-grp">
-                    {activeTab === "Description" && <Coursedescription />}
+                    {activeTab === "Description" && <Coursedescription btnValue={btnValue} />}
                     {activeTab === "Content" && <Coursecontent />}
                     {activeTab === "Notes" && (state ? <Coursenotes /> : <Notloggedin />)}
                     {activeTab === "Test" && (state ? <Coursetest /> : <Notloggedin />)}
