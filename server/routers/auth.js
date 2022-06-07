@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 const express = require("express")
 const router = express.Router()
 const Authenticate = require('../middlewares/Authenticate')
+const AuthEnroll = require("../middlewares/AuthEnroll")
 
 require("../db/conn")
 const User = require('../models/user')
@@ -32,7 +33,7 @@ router.post("/paymentProcess", Authenticate, async (req, res) => {
                 enrolledCourseID,
                 enrolledCourseName
             }]
-            await ((req.loggedInUser).save())
+            // await ((req.loggedInUser).save())
         } else {
             res.status(402).json({ err: "Payment Unsuccessful" })
         }
@@ -66,6 +67,11 @@ router.get('/courses/test/:id', async (req, res) => {
     let newObject = await Course.findOne({ _id: req.params.id })
     req.newObject = newObject
     res.send(req.newObject)
+})
+
+router.get('/courses/enrollAuth/:id', Authenticate, AuthEnroll, async (req, res) => {
+    // console.log(req.enrollStatus)
+    res.send(req.enrollStatus)
 })
 
 router.get('/courses/contents/:id', (req, res) => {

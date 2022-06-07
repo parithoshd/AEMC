@@ -1,23 +1,59 @@
-import React, { useContext } from 'react'
-// import { NavLink } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import "./Coursecontent.css"
 import Notloggedin from './Notloggedin';
+import Notenrolled from './Notenrolled';
 
 import { UserContext } from "./UserContextProvider";
 
 const Content = () => {
+
+    const [enrollAuth, setEnrollAuth] = useState(false)
+    const navigate = useNavigate()
+    const callEnrollAuthPage = async () => {
+        const course_id = (window.location.href).split("/")[4]
+        try {
+            // console.log(course_id);
+            const response = await fetch(`/courses/enrollAuth/${course_id}`, {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+            });
+            const data = await response.json();
+            console.log(data)
+
+            if (data)
+                setEnrollAuth(true)
+
+        } catch (err) {
+            console.log(err)
+            navigate('/adn')
+        }
+    }
+
+    useEffect(() => {
+        callEnrollAuthPage()
+    }, [])
+
+    const VideoStream = () => {
+        return (
+            <>
+                <div className='flex-grow-1 m-3 border border-2'>
+                    <div className='actual-video border border-2'>VIDEO DIV</div>
+                </div>
+            </>
+        )
+    }
+
     const { state, dispatch } = useContext(UserContext);
     return (
         <>
             <div className='d-flex'>
                 <Content_list />
-                {!state ? <Notloggedin /> :
-                    (
-                        <div className='flex-grow-1 m-3 border border-2'>
-                            <div className='actual-video border border-2'>VIDEO DIV</div>
-                        </div>
-                    )
-                }
+                {!state ? <Notloggedin /> : (!enrollAuth ? <Notenrolled /> : <VideoStream />)}
             </div>
         </>
     )

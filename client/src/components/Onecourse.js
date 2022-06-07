@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react'
-import { NavLink } from 'react-router-dom'
 
 import './Onecourse.css'
 
@@ -8,7 +7,7 @@ import Coursedescription from './Coursedescription'
 import Coursenotes from './Coursenotes'
 import Coursetest from './Coursetest'
 import Notloggedin from './Notloggedin'
-import Notenrolled from './Notenrolled'
+
 import { UserContext } from "./UserContextProvider";
 
 const Onecourse = (props) => {
@@ -32,6 +31,9 @@ const Onecourse = (props) => {
             mini = true;
         }
     }
+
+
+
 
 
 

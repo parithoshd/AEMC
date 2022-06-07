@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import "./Coursetest.css"
 import { useNavigate } from 'react-router-dom';
+import Notenrolled from './Notenrolled';
 
 const Coursetest = () => {
     const navigate = useNavigate()
@@ -12,115 +13,7 @@ const Coursetest = () => {
     const [disableBtn, setDisableBtn] = useState(true)
     const [selectedAnswer, setSelectedAnswer] = useState("")
     const [buttonValue, setButtonValue] = useState("Next Question")
-
-    // const examQuestions = [
-    //     {
-    //         question: "Question 1",
-    //         choices: [
-    //             { choice: "Option 1" },
-    //             { choice: "Option 2" },
-    //             { choice: "Option 3" },
-    //             { choice: "Option 4" }
-    //         ],
-    //         answer: "Option 1"
-    //     },
-    //     {
-    //         question: "Question 2",
-    //         choices: [
-    //             { choice: "Option 1" },
-    //             { choice: "Option 2" },
-    //             { choice: "Option 3" },
-    //             { choice: "Option 4" }
-    //         ],
-    //         answer: "Option 2"
-    //     },
-    //     {
-    //         question: "Question 3",
-    //         choices: [
-    //             { choice: "Option 1" },
-    //             { choice: "Option 2" },
-    //             { choice: "Option 3" },
-    //             { choice: "Option 4" }
-    //         ],
-    //         answer: "Option 3"
-    //     },
-    //     {
-    //         question: "Question 4",
-    //         choices: [
-    //             { choice: "Option 1" },
-    //             { choice: "Option 2" },
-    //             { choice: "Option 3" },
-    //             { choice: "Option 4" }
-    //         ],
-    //         answer: "Option 4"
-    //     },
-    //     {
-    //         question: "Question 5",
-    //         choices: [
-    //             { choice: "Option 1" },
-    //             { choice: "Option 2" },
-    //             { choice: "Option 3" },
-    //             { choice: "Option 4" }
-    //         ],
-    //         answer: "Option 1"
-    //     },
-    //     {
-    //         question: "Question 6",
-    //         choices: [
-    //             { choice: "Option 1" },
-    //             { choice: "Option 2" },
-    //             { choice: "Option 3" },
-    //             { choice: "Option 4" }
-    //         ],
-    //         answer: "Option 2"
-    //     },
-    //     {
-    //         question: "Question 7",
-    //         choices: [
-    //             { choice: "Option 1" },
-    //             { choice: "Option 2" },
-    //             { choice: "Option 3" },
-    //             { choice: "Option 4" }
-    //         ],
-    //         answer: "Option 3"
-    //     },
-    //     {
-    //         question: "Question 8",
-    //         choices: [
-    //             { choice: "Option 1" },
-    //             { choice: "Option 2" },
-    //             { choice: "Option 3" },
-    //             { choice: "Option 4" }
-    //         ],
-    //         answer: "Option 4"
-    //     },
-    //     {
-    //         question: "Question 9",
-    //         choices: [
-    //             { choice: "Option 1" },
-    //             { choice: "Option 2" },
-    //             { choice: "Option 3" },
-    //             { choice: "Option 4" }
-    //         ],
-    //         answer: "Option 1"
-    //     },
-    //     {
-    //         question: "Question 10",
-    //         choices: [
-    //             { choice: "Option 1" },
-    //             { choice: "Option 2" },
-    //             { choice: "Option 3" },
-    //             { choice: "Option 4" }
-    //         ],
-    //         answer: "Option 2"
-    //     }
-    // ];
-
-    // {
-    //     "question": "Question 1",
-    //     "choices": ["Option 1", "Option 2", "Option 3", "Option 4"],
-    //     "answer": "Option 1"
-    // },
+    const [enrollAuth, setEnrollAuth] = useState(false)
 
     const [examQuestions, setExamQuestions] = useState([{
         question: "",
@@ -154,9 +47,35 @@ const Coursetest = () => {
     }
 
 
+    const callEnrollAuthPage = async () => {
+        const course_id = (window.location.href).split("/")[4]
+        try {
+            // console.log(course_id);
+            const response = await fetch(`/courses/enrollAuth/${course_id}`, {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+            });
+            const data = await response.json();
+            console.log(data)
+
+            if (data)
+                setEnrollAuth(true)
+
+        } catch (err) {
+            console.log(err)
+            navigate('/adn')
+        }
+    }
+
+
 
 
     useEffect(() => {
+        callEnrollAuthPage()
         callTestPage()
     }, [])
 
@@ -214,54 +133,57 @@ const Coursetest = () => {
 
     }
 
+    const Test = () => {
+        <div className="test">
+            <h1>QUIZ</h1>
+
+            <h2>Score: {score}</h2>
+
+            {showResults ? (
+                <div className="final-results">
+                    <h1>Final Results</h1>
+                    <h2>
+                        {score} out of {examQuestions.length} correct - (
+                        {(score / examQuestions.length) * 100}%)
+                    </h2>
+                    <button className='custom-btn btn px-4 mx-3 my-2' onClick={() => navigate('/')}>Go to Home Page</button>
+                </div>
+            ) : (
+                <div className="question-card">
+                    <h2>
+                        Question: {currentQuestion + 1} out of {examQuestions.length}
+                    </h2>
+                    <h3 className="question-text">
+                        {examQuestions[currentQuestion].question}
+                    </h3>
+
+                    <ul className="options">
+                        {examQuestions[currentQuestion].choices.map((choice, index) => {
+                            return (
+                                <li
+                                    key={index}
+                                    className={"option " + (disableChoice && "disable-choice")}
+                                    id={choice}
+                                    onClick={(e) => handleOptionClick(e, examQuestions[currentQuestion].answer)}
+                                >
+                                    {choice}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                    <button className={"next-question " + (disableBtn && "disable-choice")} onClick={() => handleNextQuestion(examQuestions[currentQuestion].answer)}>
+                        {buttonValue}
+                    </button>
+                </div>
+            )}
+        </div>
+    }
+
 
     return (
         <>
-            {showInstructions ? <Instructions /> :
-
-                <div className="test">
-                    <h1>QUIZ</h1>
-
-                    <h2>Score: {score}</h2>
-
-                    {showResults ? (
-                        <div className="final-results">
-                            <h1>Final Results</h1>
-                            <h2>
-                                {score} out of {examQuestions.length} correct - (
-                                {(score / examQuestions.length) * 100}%)
-                            </h2>
-                            <button className='custom-btn btn px-4 mx-3 my-2' onClick={() => navigate('/')}>Go to Home Page</button>
-                        </div>
-                    ) : (
-                        <div className="question-card">
-                            <h2>
-                                Question: {currentQuestion + 1} out of {examQuestions.length}
-                            </h2>
-                            <h3 className="question-text">
-                                {examQuestions[currentQuestion].question}
-                            </h3>
-
-                            <ul className="options">
-                                {examQuestions[currentQuestion].choices.map((choice, index) => {
-                                    return (
-                                        <li
-                                            key={index}
-                                            className={"option " + (disableChoice && "disable-choice")}
-                                            id={choice}
-                                            onClick={(e) => handleOptionClick(e, examQuestions[currentQuestion].answer)}
-                                        >
-                                            {choice}
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                            <button className={"next-question " + (disableBtn && "disable-choice")} onClick={() => handleNextQuestion(examQuestions[currentQuestion].answer)}>
-                                {buttonValue}
-                            </button>
-                        </div>
-                    )}
-                </div>
+            {!enrollAuth ? <Notenrolled /> :
+                (showInstructions ? <Instructions /> : <Test />)
             }
         </>
     );
