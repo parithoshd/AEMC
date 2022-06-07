@@ -72,8 +72,19 @@
 	padding: 15px;
 	margin: 5px 0;
 	font-size: 14px;
-	background-color: #f34646;
-	color: white;
+	background-color: #f8d7da;
+	color: #842029;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.success_msg{
+	width: 370px;
+	padding: 15px;
+	margin: 5px 0;
+	font-size: 14px;
+	background-color: #d1e7dd;
+	color: #0f5132;
 	border-radius: 5px;
 	text-align: center;
 }

@@ -46,7 +46,11 @@ const Login = () => {
     } else {
       console.log("Login Successful");
       setStatus({ type: "success" });
+<<<<<<< Updated upstream
       setError("Login Successful! You will be redirected to Courses page.");
+=======
+      setError("Login Successful! You will be redirected to courses page.");
+>>>>>>> Stashed changes
       setTimeout(() => {
         navigate("/courses");
         dispatch({ type: "USER", payload: true });

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import homeimg from "./images/home1.jpg";
+import aboutimag from "./images/medcodss.png";
 
 const Home = () => {
   return (
@@ -19,7 +20,11 @@ const Home = () => {
                   which further grabs engagement.
                 </p>
 
-                <a routerlink="/contact" className="default-btn" href="/contact">
+                <a
+                  routerlink="/contact"
+                  className="default-btn"
+                  href="/contact"
+                >
                   <button type="button" className="btn btn-primary btn-lg">
                     <i className="fi fi-rr-user"></i> Get Started Now
                   </button>
@@ -73,9 +78,68 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div className="section-title">
-            <h2 id="about">About us</h2>
+        <div className="about-title-area">
+          <div className="container" >
+            <h2 >About us</h2>
+          </div>
+        </div>
+        <div className="about-area ptb-25" >
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-lg-6 col-md-12">
+                <div className="about-image">
+                  <img src={aboutimag} id="about" alt="" />
+                </div>
+              </div>
+              <div className="col-lg-6 col-md-12">
+                <div className="about-content">
+                  <h2 >
+                    Your success of becoming a professional medical coder is
+                    what AEMC aims at!
+                  </h2>
+                  <p >
+                    The best medical coding academy with certified professional
+                    trainers who are capable of teaching you from the scratch
+                    and also nurture your knowledge. Our trainers have deserving
+                    experience and are of high standards in terms of medical
+                    coding to be in precise.
+                  </p>
+                  <p>            
+                    AEMC strives to enhance the skills of a medical coder to get
+                    better opportunity in reputed companies in India as well as
+                    abroad. We provide certification as the certified coders are
+                    recognized internationally in the Healthcare Industry with
+                    excellent career growth and salary package.
+                  </p>
+                  <ul className="features-list">
+                    <li>
+                      <span>
+                      <i class="fi fi-rs-laptop"></i>
+                      Remote Learning
+                      </span>
+                      </li>
+                    <li>
+                      <span>
+                      <i class="fi fi-ss-earnings"></i>
+                      Self Development
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                      <i class="fi fi-rr-time-forward"></i>
+                      Lifetime Access
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                      <i class="fi fi-rs-briefcase"></i>
+                      Expert Instruction
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
