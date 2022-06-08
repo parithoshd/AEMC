@@ -14,6 +14,9 @@ const Coursetest = () => {
     const [selectedAnswer, setSelectedAnswer] = useState("")
     const [buttonValue, setButtonValue] = useState("Next Question")
     const [enrollAuth, setEnrollAuth] = useState(false)
+    const [attempted, setAttempted] = useState(false)
+    const [correctAnswerColor, setCorrectAnswerColor] = useState("")
+    const [wrongAnswerColor, setWrongAnswerColor] = useState("")
 
     const [examQuestions, setExamQuestions] = useState([{
         question: "",
@@ -26,7 +29,6 @@ const Coursetest = () => {
     const callTestPage = async () => {
         try {
             const course_id = (window.location.href).split("/")[4]
-            // console.log(course_id);
             const response = await fetch(`/courses/test/${course_id}`, {
                 method: "GET",
                 headers: {
@@ -37,10 +39,7 @@ const Coursetest = () => {
             });
 
             const data = await response.json();
-            console.log(data)
             setExamQuestions(data.exam)
-            console.log(examQuestions)
-
         } catch (err) {
             console.log(err)
             navigate('/courses')
@@ -51,7 +50,6 @@ const Coursetest = () => {
     const callEnrollAuthPage = async () => {
         const course_id = (window.location.href).split("/")[4]
         try {
-            // console.log(course_id);
             const response = await fetch(`/courses/enrollAuth/${course_id}`, {
                 method: "GET",
                 headers: {
@@ -61,7 +59,6 @@ const Coursetest = () => {
                 credentials: "include",
             });
             const data = await response.json();
-            // console.log(data)
 
             if (data)
                 setEnrollAuth(true)
@@ -72,30 +69,63 @@ const Coursetest = () => {
         }
     }
 
+    const checkAttemptsPage = async () => {
+        const course_id = (window.location.href).split("/")[4]
+        try {
+            const response = await fetch(`/user/checkAttempt/${course_id}`, {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+            });
+            const data = await response.json();
+            setAttempted(data.hasAttempted ? true : false)
+            setAttempted(false)
+
+        } catch (err) {
+            console.log(err)
+            navigate('/adn')
+        }
+    }
+
     useEffect(() => {
         callEnrollAuthPage()
         callTestPage()
+        checkAttemptsPage()
     }, [])
 
-    // useEffect(() => {
-    //     // callEnrollAuthPage()
-    // }, [])
-
     const handleOptionClick = (e, actualAnswer) => {
-        let answerColor;
         if (e.target.id === actualAnswer) {
-            answerColor = "lightgreen";
+            setCorrectAnswerColor(actualAnswer)
             setScore(score + 1)
-            console.log(score);
         } else {
-            answerColor = "red";
+            setWrongAnswerColor(e.target.id)
         }
-        document.getElementById(e.target.id).style.backgroundColor = answerColor;
-        document.getElementById(actualAnswer).style.backgroundColor = "#00e600";
+        setCorrectAnswerColor(actualAnswer)
         setSelectedAnswer(e.target.id)
         setDisableBtn(false)
         setDisableChoice(true);
     };
+
+    const updateGrade = async () => {
+        const course_id = (window.location.href).split("/")[4]
+        try {
+            const response = await fetch(`/courses/updateGrade/${course_id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ 'grade': ((score / examQuestions.length) * 100).toString() }),
+            });
+            const data = await response.json();
+        } catch (err) {
+            console.log(err)
+            navigate("/adn")
+        }
+
+    }
 
     const handleNextQuestion = (actualAnswer) => {
         if (currentQuestion + 1 === examQuestions.length - 1) {
@@ -104,14 +134,30 @@ const Coursetest = () => {
         if (currentQuestion + 1 < examQuestions.length) {
             setCurrentQuestion(currentQuestion + 1);
         } else {
+            updateGrade()
             setShowResults(true);
         }
 
-        document.getElementById(actualAnswer).style.backgroundColor = "#d3d3d3";
-        document.getElementById(selectedAnswer).style.backgroundColor = "#d3d3d3";
+        // document.getElementById(actualAnswer).style.backgroundColor = "#d3d3d3";
+        // document.getElementById(selectedAnswer).style.backgroundColor = "#d3d3d3";
+        setWrongAnswerColor(false)
+        setCorrectAnswerColor(false)
+
         setDisableChoice(false)
         setDisableBtn(true)
 
+    }
+
+
+    const Attempted = () => {
+        return (
+            <>
+                <div className="alert alert-info warning-msg" role="alert">
+                    <h4 className="alert-heading">You have already attempted this Quiz.</h4>
+                    <p>It looks like you have already attempted this quiz. Please Check <span className='fw-bolder'> User Details</span> for the Grade.</p>
+                </div>
+            </>
+        )
     }
 
     const Instructions = () => {
@@ -164,7 +210,7 @@ const Coursetest = () => {
                                 return (
                                     <li
                                         key={index}
-                                        className={"option " + (disableChoice && "disable-choice")}
+                                        className={"option " + (wrongAnswerColor === choice ? " wrong-answer " : "") + (correctAnswerColor === choice ? " correct-answer " : "") + (disableChoice && "disable-choice")}
                                         id={choice}
                                         onClick={(e) => handleOptionClick(e, examQuestions[currentQuestion].answer)}
                                     >
@@ -173,7 +219,7 @@ const Coursetest = () => {
                                 );
                             })}
                         </ul>
-                        <button className={"next-question " + (disableBtn && "disable-choice")} onClick={() => handleNextQuestion(examQuestions[currentQuestion].answer)}>
+                        <button className={"next-question " + (disableBtn && " disable-choice ")} onClick={() => handleNextQuestion(examQuestions[currentQuestion].answer)}>
                             {buttonValue}
                         </button>
                     </div>
@@ -185,8 +231,9 @@ const Coursetest = () => {
 
     return (
         <>
-            {!enrollAuth ? <Notenrolled /> :
-                showInstructions ? <Instructions /> : <Test />
+            {attempted ? <Attempted /> :
+                !enrollAuth ? <Notenrolled /> :
+                    showInstructions ? <Instructions /> : <Test />
             }
         </>
     );

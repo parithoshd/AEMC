@@ -43,15 +43,15 @@ const Register = () => {
     const data = await res.json();
     if (res.status === 422 || !data) {
       setError("Registration Unsuccessful");
-      setStatus({type:"error"});
+      setStatus({ type: "error" });
     } else {
-        setStatus({type:"success"});
-        setError("Registration Successful! Redirecting to login.");
-        setTimeout(() => {
+      setStatus({ type: "success" });
+      setError("Registration Successful! Redirecting to login.");
+      setTimeout(() => {
         navigate("/login");
       }, 2000);
     }
-    
+
   };
 
   return (
@@ -122,7 +122,7 @@ const Register = () => {
                 required
                 className="input"
               />
-              
+
               <button type="submit" className="green_btn">
                 Sign Up
               </button>

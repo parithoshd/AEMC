@@ -13,9 +13,11 @@ const RenderMenu = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light ">
         <div className="container-fluid">
-          <NavLink className="navbar-brand" to="/">
+          <NavLink className="navbar-brand" to="/"
+            onClick={() => { window.scrollTo(0, 0) }}>
             <img className="logo" src={logo} />
           </NavLink>
+
           <button
             className="navbar-toggler"
             type="button"
@@ -31,7 +33,7 @@ const RenderMenu = () => {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="/"
-                onClick={()=>{window.scrollTo(0,0)}}>
+                  onClick={() => { window.scrollTo(0, 0) }}>
                   Home
                 </NavLink>
               </li>
@@ -41,12 +43,14 @@ const RenderMenu = () => {
                   className="nav-link active"
                   aria-current="page"
                   to="/ "
-                  onClick={()=>{setTimeout(() => {
-                    const anchor = document.querySelector("#about");
-                    document
-                      .querySelector("#about")
-                      .scrollIntoView({ behavior: "smooth", block: "center" });
-                  }, 100)}}
+                  onClick={() => {
+                    setTimeout(() => {
+                      const anchor = document.querySelector("#about");
+                      document
+                        .querySelector("#about")
+                        .scrollIntoView({ behavior: "smooth", block: "center" });
+                    }, 100)
+                  }}
                 >
                   About Us
                 </NavLink>

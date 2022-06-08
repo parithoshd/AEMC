@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const express = require("express")
@@ -9,6 +8,7 @@ const AuthEnroll = require("../middlewares/AuthEnroll")
 require("../db/conn")
 const User = require('../models/user')
 const Course = require("../models/course")
+const { db } = require('../models/user')
 
 // Home Page Route
 router.get('/', (req, res) => {
@@ -23,6 +23,13 @@ router.get('/about', (req, res) => {
 
 router.get('/userdetails', Authenticate, (req, res) => {
     res.send(req.loggedInUser)
+})
+
+router.get('/user/checkAttempt/:id', Authenticate, (req, res) => {
+    // console.log(req.params.id)
+    // if (vendors.filter(e => e.Name === 'Magenic').length > 0)
+    var hasAttempted = ((req.loggedInUser.enrolledCourses).filter(enrolledCourse => enrolledCourse.enrolledCourseID === req.params.id)[0].grade ? true : false)
+    res.send({ hasAttempted: hasAttempted })
 })
 
 router.post("/paymentProcess", Authenticate, async (req, res) => {
@@ -48,7 +55,6 @@ router.post("/paymentProcess", Authenticate, async (req, res) => {
 router.get('/courses', async (req, res) => {
     try {
         courseData = await Course.find()
-        // console.log(courseData)
         req.courseData = courseData
         res.send(req.courseData)
     } catch (err) {
@@ -69,8 +75,13 @@ router.get('/courses/test/:id', async (req, res) => {
     res.send(req.newObject)
 })
 
+router.post('/courses/updateGrade/:id', Authenticate, AuthEnroll, async (req, res) => {
+    ((req.loggedInUser).enrolledCourses)[(((req.loggedInUser).enrolledCourses).findIndex((enrolledCourse) => enrolledCourse.enrolledCourseID === req.params.id))].grade = parseInt(req.body.grade)
+    await (req.loggedInUser).save()
+    res.send({ message: "Grade updated successfully" })
+})
+
 router.get('/courses/enrollAuth/:id', Authenticate, AuthEnroll, async (req, res) => {
-    // console.log(req.enrollStatus)
     res.send(req.enrollStatus)
 })
 

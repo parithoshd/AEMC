@@ -84,8 +84,8 @@ const Coursedescription = ({ btnValue }) => {
                         <h4>Price: {onecourseData.cost}</h4>
                         <h6>Duration: {onecourseData.duration}</h6>
                         {/* <button onClick={() => window.open("http://localhost:3000")}>Enroll</button> */}
-                        <button className={'px-4 mx-3 my-2 enroll-btn btn btn-primary btn-lg ' + (!btnValue && "disable-btn")} onClick={(e) => handleSubmit(onecourseData.courseName, e)}>Enroll</button>
-                        <div>{!btnValue && <h6 className='text-muted'>*Already enrolled for the course*</h6>}</div>
+                        <button className={'px-4 mx-3 my-2 enroll-btn btn btn-primary btn-lg ' + (!btnValue && "disable-btn")} onClick={(e) => handleSubmit(onecourseData.courseName, e)}>{btnValue ? "Enroll" : "Enrolled"}</button>
+                        {/* <div>{!btnValue && <h6 className='text-muted'>*Already enrolled for the course*</h6>}</div> */}
                     </div>
                 </div>
                 <div>

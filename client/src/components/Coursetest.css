@@ -47,6 +47,16 @@
   font-size: 24px;
 }
 
+.correct-answer {
+  background-color: lightgreen;
+  transition: 0.5s;
+}
+
+.wrong-answer {
+  background-color: red;
+  transition: 0.5s;
+}
+
 /* Final Results  */
 
 .final-results {

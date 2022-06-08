@@ -10,7 +10,6 @@ const Coursenotes = () => {
     const callEnrollAuthPage = async () => {
         const course_id = (window.location.href).split("/")[4]
         try {
-            // console.log(course_id);
             const response = await fetch(`/courses/enrollAuth/${course_id}`, {
                 method: "GET",
                 headers: {
@@ -20,7 +19,6 @@ const Coursenotes = () => {
                 credentials: "include",
             });
             const data = await response.json();
-            console.log(data)
 
             if (data)
                 setEnrollAuth(true)

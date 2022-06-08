@@ -1,6 +1,6 @@
 @import url("https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css");
 @import url("https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css");
-@import url('https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css');
+@import url("https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css");
 
 .wrapper {
   position: relative;
@@ -103,11 +103,11 @@
   margin-bottom: 0px;
 }
 
-.ptb-100{
+.ptb-100 {
   padding-top: 100px;
   padding-bottom: 100px;
 }
-.ptb-25{
+.ptb-25 {
   padding-top: 25px;
   padding-bottom: 25px;
 }
@@ -132,18 +132,18 @@
   padding-bottom: 0px;
 }
 
-img {
+#about {
   max-width: 100%;
   height: auto;
 }
 
-.about-content h2{
+.about-content h2 {
   margin-bottom: 15px;
   font-size: 36px;
   font-weight: 600;
 }
 
-.about-content  .features-list{
+.about-content .features-list {
   padding-left: 0;
   list-style-type: none;
   display: flex;
@@ -151,7 +151,7 @@ img {
   margin: -5px -8px 0;
 }
 
-.about-content  .features-list  li{
+.about-content .features-list li {
   flex: 0 0 50%;
   max-width: 50%;
   padding-left: 8px;
@@ -159,7 +159,7 @@ img {
   padding-top: 16px;
 }
 
-.about-content .features-list li span{
+.about-content .features-list li span {
   display: block;
   position: relative;
   color: var(--blackColor);
@@ -170,7 +170,7 @@ img {
   padding-bottom: 5px;
 }
 
-.about-content .features-list li span i{
+.about-content .features-list li span i {
   position: absolute;
   left: 0;
   top: -2px;
