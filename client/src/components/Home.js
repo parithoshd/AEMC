@@ -104,7 +104,7 @@ const Home = () => {
                     experience and are of high standards in terms of medical
                     coding to be in precise.
                   </p>
-                  <p>            
+                  <p>
                     AEMC strives to enhance the skills of a medical coder to get
                     better opportunity in reputed companies in India as well as
                     abroad. We provide certification as the certified coders are
@@ -114,26 +114,26 @@ const Home = () => {
                   <ul className="features-list">
                     <li>
                       <span>
-                      <i class="fi fi-rs-laptop"></i>
-                      Remote Learning
-                      </span>
-                      </li>
-                    <li>
-                      <span>
-                      <i class="fi fi-ss-earnings"></i>
-                      Self Development
+                        <i className="fi fi-rs-laptop"></i>
+                        Remote Learning
                       </span>
                     </li>
                     <li>
                       <span>
-                      <i class="fi fi-rr-time-forward"></i>
-                      Lifetime Access
+                        <i className="fi fi-ss-earnings"></i>
+                        Self Development
                       </span>
                     </li>
                     <li>
                       <span>
-                      <i class="fi fi-rs-briefcase"></i>
-                      Expert Instruction
+                        <i className="fi fi-rr-time-forward"></i>
+                        Lifetime Access
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                        <i className="fi fi-rs-briefcase"></i>
+                        Expert Instruction
                       </span>
                     </li>
                   </ul>

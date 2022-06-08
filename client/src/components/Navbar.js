@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar.css";
+import { NavContext } from "./UserContextProvider";
 import { NavLink } from "react-router-dom";
 
 import { UserContext } from "./UserContextProvider";
@@ -9,6 +10,9 @@ import logo from "../icons/aemclogo.png";
 import userlogo from "../icons/user.ico";
 
 const RenderMenu = () => {
+  const { val, setval } = useContext(NavContext);
+  // console.log(val);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light ">
@@ -43,6 +47,7 @@ const RenderMenu = () => {
                   className="nav-link active"
                   aria-current="page"
                   to="/ "
+                  id="navid"
                   onClick={() => {
                     setTimeout(() => {
                       const anchor = document.querySelector("#about");

@@ -4,6 +4,8 @@ import "./index.css";
 // import "../src/components/style.css"
 import App from "./App";
 import { UserProvider } from "./components/UserContextProvider";
+import { NavProvider } from "./components/UserContextProvider";
+import { PayProvider } from "./components/UserContextProvider";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
@@ -11,9 +13,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <UserProvider>
-      <App />
-    </UserProvider>
+      <PayProvider>
+        <NavProvider>
+          <UserProvider>
+            <App />
+          </UserProvider>
+        </NavProvider>
+      </PayProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

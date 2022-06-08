@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GooglePayButton from '@google-pay/button-react'
+import { PayContext } from './UserContextProvider'
 
 
-const Payment = () => {
+const Payment = ({ price }) => {
+    const { paymentStatus, setPaymentStatus } = useContext(PayContext)
+    // console.log(paymentStatus)
     return (
         <>
             <div>
@@ -35,7 +38,7 @@ const Payment = () => {
                         transactionInfo: {
                             totalPriceStatus: 'FINAL',
                             totalPriceLabel: 'Total',
-                            totalPrice: '100.00',
+                            totalPrice: price.toString(),
                             currencyCode: 'INR',
                             countryCode: 'IN',
                         },
@@ -48,6 +51,7 @@ const Payment = () => {
                     }}
                     onPaymentAuthorized={paymentData => {
                         console.log('Payment Authorized Success', paymentData)
+                        console.log(paymentData)
                         return { transactionState: 'SUCCESS' }
                     }}
                     existingPaymentMethodRequired='false'

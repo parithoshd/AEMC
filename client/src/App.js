@@ -18,16 +18,18 @@ import Payment from './components/Payment'
 
 
 import { UserContext } from './components/UserContextProvider'
+import { NavContext } from './components/UserContextProvider'
 
 
 
 const App = () => {
   const { state, dispatch } = useContext(UserContext);
+  const { val, setval } = useContext(NavContext);
 
   return (
 
     <>
-      <Navbar />
+      {val ? <Navbar /> : null}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/' element={<Home />} />
