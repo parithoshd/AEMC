@@ -4,6 +4,8 @@ import GooglePayButton from '@google-pay/button-react'
 import { PayContext } from './UserContextProvider'
 
 
+
+
 const Payment = ({ price }) => {
     const { paymentStatus, setPaymentStatus } = useContext(PayContext)
     // console.log(paymentStatus)

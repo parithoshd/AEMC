@@ -15,6 +15,7 @@ import Onecourse from './components/Onecourse'
 import Sidebar from './components/Sidebar'
 import Coursecontent from './components/Coursecontent'
 import Payment from './components/Payment'
+import Footer from './components/Footer'
 
 
 import { UserContext } from './components/UserContextProvider'
@@ -45,6 +46,7 @@ const App = () => {
         <Route path='/payment' element={<Payment />} />
         <Route path='/*' element={<Error />} />
       </Routes>
+      <Footer />
     </>
   )
 }

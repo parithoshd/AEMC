@@ -76,6 +76,7 @@ nav.main-menu.expanded {
   background: #11101d;
   /* background-color: rgb(233, 143, 9); */
   border-right: 1px solid #69696b;
+  transition: 0.3s;
   position: absolute;
   top: 50px;
   bottom: 0;

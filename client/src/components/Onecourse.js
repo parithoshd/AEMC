@@ -23,7 +23,7 @@ const Onecourse = (props) => {
         if (mini) {
             // console.log('opening sidebar');
             // document.getElementById('mySidebar').style.width = '180px';
-            document.getElementById('main').style.marginLeft = '250px';
+            document.getElementById('main').style.marginLeft = '90px';
             document.getElementById('main').style.transition = '0.6s';
             mini = false;
         } else {
