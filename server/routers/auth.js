@@ -32,6 +32,13 @@ router.get('/user/checkAttempt/:id', Authenticate, (req, res) => {
     res.send({ hasAttempted: hasAttempted })
 })
 
+router.get("/courses/getContent/:id", async (req, res) => {
+    // console.log(req.params.id)
+    let requestedCourse = await Course.findOne({ _id: req.params.id })
+    // console.log(requestedCourse.listOfContents)
+    res.send({ listOfContents: requestedCourse.listOfContents })
+})
+
 router.post("/paymentProcess", Authenticate, async (req, res) => {
     const { enrolledCourseID, enrolledCourseName, paymentStatus } = req.body
     try {
