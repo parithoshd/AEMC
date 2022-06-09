@@ -102,11 +102,10 @@ const Coursetest = () => {
 
     useEffect(() => {
         if (enrollAuth) {
-            console.log("Enroll Auth: ", enrollAuth, "State: ", state)
             callTestPage()
             checkAttemptsPage()
         }
-    })
+    }, [enrollAuth])
 
     const handleOptionClick = (e, actualAnswer) => {
         if (e.target.id === actualAnswer) {
@@ -187,7 +186,7 @@ const Coursetest = () => {
                     <li>DO NOT CLOSE THE WINDOW WHILE THE TEST IS GOING ON.</li>
                     <li>DO NOT CHANGE TABS WHILE THE TEST IS GOING ON.</li>
                 </div>
-                <button className='test-strt' onClick={() => setInstructions(false)}>START THE TEST</button>
+                <button className='test-btn' onClick={() => setInstructions(false)}>START THE TEST</button>
             </>
         )
     }

@@ -8,16 +8,15 @@
   margin: 0 auto;
 
   /* Dimensions  */
-  width: 30%; /* Can be in percentage also. */
+  width: 50%; /* Can be in percentage also. */
   height: auto;
 
   /* Visual  */
-  background-color: gray;
+  background-image: linear-gradient(#e4efe9,#93a5cf );
   padding: 16px;
-  border-radius: 16px;
-  color: white;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  border-radius: 0px;
+  color: black;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .options {
@@ -27,23 +26,22 @@
 
 .option {
   margin-top: 8px;
-  background-color: #d3d3d3;
+  background-color: none;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   padding: 16px;
-  border: 3px solid white;
-  border-radius: 20px;
   font-size: 20px;
   cursor: pointer;
-  color: rgba(42, 39, 39, 0.633);
+  color: #100f1f;
 }
 
 .option:hover {
-  background-color: #a9a9a9;
+  background-color: white ;
   color: black;
   transition: 0.3s;
 }
 
 .question-text {
-  color: darkblue;
+  color: black;
   font-size: 24px;
 }
 
@@ -69,12 +67,10 @@
   margin-top: 64px;
 
   /* Visual  */
-  background-color: gray;
+  background-image: linear-gradient(#e4efe9,#93a5cf );
   padding: 16px;
-  border-radius: 16px;
-  color: white;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  color: #100f1f;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
 .instructions {
@@ -87,7 +83,7 @@
   padding: 4px;
 }
 
-.test-strt {
+/* .test-strt {
   color: red;
   background-color: white;
   border: 1px solid red;
@@ -98,29 +94,52 @@
   font-size: 16px;
   font-weight: bold;
   border-radius: 24px;
+} */
+
+.test-btn{
+  background-color: #100f1f;
+  color: white;
+  font-size: larger;
+  font-weight: 700;
+  width: 200px;
+  margin: auto;
+  border-radius:5px ;
+  padding: 10px 16px;
+  outline: 0;
+  margin-bottom: 20px;
+  /* border-radius: 20px; */
+  border: 0;
+  font-size: 14px;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
 }
 
-.test-strt:hover {
-  background-color: red;
-  color: white;
-  transition: 0.7s;
+.test-btn:hover{
+  background-color: white;
+  color: var(--secondaryColor);
+  transition: 0.5s;
+  /* text-decoration: none; */
+  border: 1px solid #100f1f;
+  
 }
+
+
 
 .next-question {
-  background-color: rgb(204, 33, 33);
-  border: none;
-  color: rgb(123, 114, 114);
-  padding: 16px 24px;
-  text-align: center;
+  background-color: none;
+  border: 2px solid #100f1f;
+  color: #100f1f;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 24px;
+  width: 170px;
+  height: 50px;
 }
 
 .next-question:hover {
-  background-color: red;
+  background-color: #100f1f;
   color: white;
   transition: 0.5s;
 }
