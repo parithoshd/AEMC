@@ -13,3 +13,14 @@
   transition: 0.5s;
   color: white;
 }
+
+.course-name-link {
+  font-weight: 500;
+  font-size: 180%;
+  color: rgb(109, 138, 227);
+}
+
+.course-name-link:hover {
+  color: blue;
+  transition: 0.5s;
+}

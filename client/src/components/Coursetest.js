@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import "./Coursetest.css"
 import { useNavigate } from 'react-router-dom';
 import Notenrolled from './Notenrolled';
+import { UserContext } from "./UserContextProvider";
+
 
 const Coursetest = () => {
     const navigate = useNavigate()
+    const { state, dispatch } = useContext(UserContext);
     const [showResults, setShowResults] = useState(false)
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [score, setScore] = useState(0)
@@ -91,10 +94,19 @@ const Coursetest = () => {
     }
 
     useEffect(() => {
-        callEnrollAuthPage()
-        callTestPage()
-        checkAttemptsPage()
+        if (state) {
+            callEnrollAuthPage()
+        }
+
     }, [])
+
+    useEffect(() => {
+        if (enrollAuth) {
+            console.log("Enroll Auth: ", enrollAuth, "State: ", state)
+            callTestPage()
+            checkAttemptsPage()
+        }
+    })
 
     const handleOptionClick = (e, actualAnswer) => {
         if (e.target.id === actualAnswer) {

@@ -1,177 +1,174 @@
-#contact_main{
-    background-color: #ebf1eb;
-    padding: 20px 30px 30px 50px;
-    /* margin-left: 150px; */
-    margin: 30px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  }
+#contact_main {
+  background-color: #ebf1eb;
+  padding: 20px 30px 30px 50px;
+  /* margin-left: 150px; */
+  margin: 30px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
 
-  .Cmain h1{
-    margin-left: 100%;
-    font-weight: 700;
-    padding-bottom: 30px;
-  }
-  
-#contact_main h1{
-    color: white;
-    font-weight: 700;
-    position: relative;
-    background-color: var(--secondaryColor);
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px; 
-    margin: 0px -70px 20px -30px;
-    padding: 24px 0px 16px 30px;
-  }
+.Cmain h1 {
+  margin-left: 100%;
+  font-weight: 700;
+  padding-bottom: 30px;
+}
 
-.Contact-Information h2{
-    color: white;
-    font-weight: 700;
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-    position: relative;
-    background-color:  var(--secondaryColor);
-    margin: 0px -70px 20px -30px;
-    padding: 24px 0px 16px 30px;
-  }
+#contact_main h1 {
+  color: white;
+  font-weight: 700;
+  position: relative;
+  background-color: var(--secondaryColor);
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  margin: 0px -70px 20px -30px;
+  padding: 24px 0px 16px 30px;
+}
 
+.Contact-Information h2 {
+  color: white;
+  font-weight: 700;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  position: relative;
+  background-color: var(--secondaryColor);
+  margin: 0px -70px 20px -30px;
+  padding: 24px 0px 16px 30px;
+}
 
 #contact_main p {
-    text-align: justify;
-    font-weight: 700;
-  }
-  
+  text-align: justify;
+  font-weight: 700;
+}
+
 #contact_main h1::after {
-    content: "";
-    display: block;
-    height: 40px;
-    width: 40px;
-    position: absolute;
-    right: 0px;
-    bottom: -40px;
-  }
-  
-  .contact-form {
-    background-color: var(--secondaryColor);
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    margin: 100px;
-    padding: 1.5em;
-    
-    @media screen and (min-width: 768px) {
-      padding: 2.5em;
-    }
-  }
-  
-  h2 {
-    text-align: center;
-    font-size: 28px;
-    padding: 0;
-    margin-bottom: 20px;
-  }
-  
-  @media screen and (min-width: 700px) {
-    .large-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-    
-    .small-group {
-      width: 100%;
+  content: "";
+  display: block;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  right: 0px;
+  bottom: -40px;
+}
 
-    }
-    
+.contact-form {
+  background-color: var(--secondaryColor);
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  margin: 100px;
+  padding: 1.5em;
+  height: 103vh;
+
+  @media screen and (min-width: 768px) {
+    padding: 2.5em;
   }
-  
-  .small-group.input{
-    background-color: green;
+}
+
+h2 {
+  text-align: center;
+  font-size: 28px;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 700px) {
+  .large-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
-  .contact-form-heading{
-    /* float: left; */
-    margin-left: -155px;
-    margin-bottom: -20px;
-    color: white;
-    font-weight: 700;
+  .small-group {
+    width: 100%;
   }
+}
 
-  .contact-form-info{
+.small-group.input {
+  background-color: green;
+}
+
+.contact-form-heading {
+  /* float: left; */
+  margin-left: -155px;
+  margin-bottom: -20px;
   color: white;
-  font-weight: 350;    
-  }
+  font-weight: 700;
+}
 
- .small-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: white;
-    font-weight: 700;
-    font-size: larger;
-  }
+.contact-form-info {
+  color: white;
+  font-weight: 350;
+}
 
-  .textarea-div label {
-    display: block;
-    margin-bottom: 5px;
-    color: white;
-    font-weight: 700;
-    font-size: larger;
-  }
-  
-  .small-group input {
-    padding: 10px 16px;
-    width: 100%;
-    outline: 0;
-    margin-bottom: 20px;
-    /* border-radius: 20px; */
-    border: 0;
-    background-color:#c22b34;
-    font-size: 14px;
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    appearance:none;
-  }
-  
-  .textarea-div {
-    width: 100%;
-  }
-  
-  textarea {
-    padding: 10px;
-    width: 100%;
-    outline: 0;
-    margin-bottom: 20px;
-    /* border-radius: 20px; */
-    border: 0;
-    background-color:#c22b34;
-    font-size: 14px;
-    height: 100px;
-  }
+.small-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+  font-weight: 700;
+  font-size: larger;
+}
 
+.textarea-div label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+  font-weight: 700;
+  font-size: larger;
+}
 
-.Cmain{
+.small-group input {
+  padding: 10px 16px;
+  width: 100%;
+  outline: 0;
+  margin-bottom: 20px;
+  /* border-radius: 20px; */
+  border: 0;
+  background-color: #c22b34;
+  font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.textarea-div {
+  width: 100%;
+}
+
+textarea {
+  padding: 10px;
+  width: 100%;
+  outline: 0;
+  margin-bottom: 20px;
+  /* border-radius: 20px; */
+  border: 0;
+  background-color: #c22b34;
+  font-size: 14px;
+  height: 100px;
+}
+
+.Cmain {
   width: 50%;
 }
 
-.contact-btn{
+.contact-btn {
   background-color: #100f1f;
   color: white;
   font-size: larger;
   font-weight: 700;
   width: 50%;
   margin: auto;
-  border-radius:5px ;
+  border-radius: 5px;
   padding: 10px 16px;
   outline: 0;
   margin-bottom: 20px;
   /* border-radius: 20px; */
   border: 0;
   font-size: 14px;
-  -webkit-appearance:none;
-  -moz-appearance:none;
-  appearance:none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
-.contact-btn:hover{
+.contact-btn:hover {
   background-color: white;
- color: var(--secondaryColor);
- transition: 0.5s;
- text-decoration: none;
+  color: var(--secondaryColor);
+  transition: 0.5s;
+  text-decoration: none;
 }
-
-  

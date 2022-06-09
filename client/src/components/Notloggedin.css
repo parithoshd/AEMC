@@ -22,9 +22,14 @@
   border-radius: 25px;
   width: 50%;
   margin: 10rem auto;
+  /* height: ; */
 }
 
 .warning-msg:hover {
   border: 1px solid black;
   transition: 0.5s;
+}
+
+.outer-warning {
+  width: 100%;
 }

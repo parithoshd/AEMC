@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 import Notenrolled from './Notenrolled'
 
+import "./Coursenotes.css"
+
 
 const Coursenotes = () => {
     const [enrollAuth, setEnrollAuth] = useState(false)
@@ -35,7 +37,7 @@ const Coursenotes = () => {
 
     return (
         <>
-            {enrollAuth ? <div>Course Notes</div> : <Notenrolled />}
+            {enrollAuth ? <div className='course-notes'>Course Notes</div> : <Notenrolled />}
         </>
 
     )

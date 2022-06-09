@@ -8,6 +8,7 @@ const Notenrolled = () => {
             <div className="alert alert-info warning-msg" role="alert">
                 <h4 className="alert-heading">Please Enroll to Continue</h4>
                 <p>It looks like you haven't Enrolled to this course yet. Please <span className='fw-bolder'>Enroll</span> to Continue</p>
+                <p>If enrolled, Please Wait while the Page is Loading...</p>
                 <hr />
                 <Link to="/courses">
                     <button type="button" className="mb-0 green-btn">
