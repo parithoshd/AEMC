@@ -156,7 +156,7 @@ const Home = () => {
                     Build Your Medical Coding Skills Online, Anytime with AEMC!
                   </h2>
                   <p>
-                    <strong>Why choose AEMC?</strong>
+                    Why choose AEMC?
                   </p>
                   <ul>
                     <li>
