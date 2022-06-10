@@ -49,6 +49,7 @@ const Courses = () => {
   let i = 0;
 
   const handleClick = (newCourse) => {
+      window.scrollTo(0, 0);
     <Onecourse course={newCourse} />;
   };
   return (
@@ -82,7 +83,7 @@ const Courses = () => {
                 />
                 <div className="card-body">
                   {/* <h5 className="card-title">{course.Name}</h5> */}
-                  <NavLink
+                  <NavLink 
                     to={`/courses/${course._id}`}
                     onMouseOver={() => {
                       document.getElementById(index).style.border =
