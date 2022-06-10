@@ -47,14 +47,13 @@ const Userdetails = () => {
     return (
         <>
 
-            <div>
+            <div className='m-5 p-3 d-flex justify-content-around userdetail-main'>
                 {/* Name And Email */}
-                <div className='m-5 p-3 d-flex justify-content-around'>
+                <div className='userdetail-name-email'>
                     <h1 className='user-name'>{(userData.firstName) + " " + (userData.lastName)}</h1>
                     <h4 className='user-email'>{userData.email}</h4>
                 </div>
                 <br /><br />
-
                 {/* Enrolled Courses */}
                 {(userData.enrolledCourses).length > 0 ?
                     <table className="table table-hover w-75 m-auto">

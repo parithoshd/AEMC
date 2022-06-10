@@ -55,6 +55,7 @@ const RenderMenu = () => {
                         .querySelector("#about")
                         .scrollIntoView({ behavior: "smooth", block: "center" });
                     }, 100)
+            
                   }}
                 >
                   About Us
@@ -65,7 +66,7 @@ const RenderMenu = () => {
                 <NavLink
                   className="nav-link active"
                   aria-current="page"
-                  to="/contact"
+                  to="/contact" onClick={() => { window.scrollTo(0, 0) }}
                 >
                   Contact Us
                 </NavLink>

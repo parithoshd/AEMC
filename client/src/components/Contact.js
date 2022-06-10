@@ -1,7 +1,26 @@
 import React from "react";
+import{ useRef } from 'react';
 import './Contact.css'
+import emailjs from 'emailjs-com';
+
+
 
 const Contact = () => {
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+    
+  
+    emailjs.sendForm('service_ssxdejo', 'template_jh5axmp', form.current, '4UITaNAVR6kWoTpXK')
+    form.current.reset()
+      .then((result) => {
+          console.log(result.text);
+          
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
+
   return (<>
   <div className="d-flex">
     <div className="col-xs-6 col-md-3 Cmain "> 
@@ -37,19 +56,19 @@ const Contact = () => {
       </div>  
     </div>
     <div className="contact-form">
-    <form>
+    <form ref={form} onSubmit={sendEmail} id="#form">
 		<h2 className="contact-form-heading">Ready to Get Started?</h2> <br />
     <p className="contact-form-info">Your email address will not be published. Required fields are marked *</p>
 		<div class="large-group">
 			<div class="small-group">
 				<label for="name">Name</label>
-				<input id="name" type="text" name="name"/>
+				<input id="name" type="text" name="from_name"/>
 			</div>
 			
 			
 			<div class="small-group">
 				<label for="email">Email</label>
-				<input id="email" type="email" name="email"/>
+				<input id="email" type="email" name="from_email"/>
 			</div>
 			
 			<div class="textarea-div">
@@ -57,7 +76,7 @@ const Contact = () => {
 				<textarea id="message" type="text" name="message"></textarea>
 			</div>
 			
-				<input id="submit" class="contact-btn" type="submit" name="submit"/>
+				<input id="submit" class="contact-btn" type="submit" name="submit" value="Send"/>
 
 		</div>
 	</form>

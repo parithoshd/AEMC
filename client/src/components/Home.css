@@ -110,6 +110,7 @@
 .ptb-25 {
   padding-top: 25px;
   padding-bottom: 25px;
+  background-color: #f8f9f8;
 }
 /*about us*/
 .about-title-area {
@@ -132,9 +133,10 @@
   padding-bottom: 0px;
 }
 
-#about {
+#aboutimg {
   max-width: 100%;
   height: auto;
+  padding-right: 90px;
 }
 
 .about-content h2 {
@@ -184,6 +186,84 @@
   font-size: 25px;
 }
 
+/*about area*/
+.about-content-box  {
+  text-decoration: none ;
+}
+
+.about-content-box h2{
+  font-size: 35px;
+  font-weight: 700;
+ text-align:left;
+}
+
+.about-content-box li{
+ font-size: large;
+ /* line-height: 1.8; */
+ font-weight: 700;
+ 
+}
+.about-img-box{
+  overflow: hidden;
+  margin-left: 50px;
+  height: 400px;
+  width: 125%;
+}
+
+.about-img-box img{
+  height: 400px;
+  width: inherit;
+  transition: 0.5s;
+}
+
+.about-img-box img:hover{
+  transform: scale(1.09);
+  transition: 0.5s;
+}
+
+/*review*/
+ .review-area{
+  color: black;
+text-align: center;
+background-color: #fffaf3;
+
+}
+.review-area h1{
+  margin-bottom: 5vw;
+  font-weight: 700;
+ font-size: 35px;
+  
+}
+
+.caritem{
+  border: 0.7px solid black;
+  width: 50%;
+  margin-left: 25%;
+  background-color: var(--primaryColor);
+}
+
+.caritem p {
+  padding: 0 40px 0 40px;
+  line-height: 2em;
+  font-weight: 500;
+  font-size: larger;
+  color: #100f1f;
+ 
+}
+
+.caritem h5{
+  color: var(--secondaryColor);
+}
+
+.carousel-indicators [data-bs-target]{
+  background-color: #100f1f;
+  
+}
+
+.carousel-indicators{
+  bottom:-50px;
+}
+
 @media only screen and (min-width: 1200px) and (max-width: 1355px) {
   .container {
     max-width: 1140px;
@@ -226,9 +306,25 @@
   }
 }
 
-@media only screen and (max-width: 767px) {
+/* @media only screen and (max-width: 767px) {
   .banner-wrapper-content h1 {
     margin-bottom: 12px;
     font-size: 28px;
   }
 }
+@media only screen and (max-width: 1350px) {
+  .about-img-box img{
+    height: 400px;
+    width: 650px;
+    transition: 0.5s;
+  }
+  
+}
+@media only screen and (max-width: 1255px) {
+  .about-img-box img{
+    height: 300px;
+    width: 550px;
+    transition: 0.5s;
+  } */
+  
+

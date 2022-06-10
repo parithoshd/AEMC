@@ -9,6 +9,9 @@
   text-align: center;
 }
 
+.table{
+  border: 2px solid #000;
+}
 .user-name {
   border: 1px solid black;
   padding: 50px;
@@ -17,4 +20,24 @@
 .user-email {
   border: 1px solid black;
   padding: 50px;
+}
+
+.userdetail-main{
+  background-color:  #f8d7da;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  color: #000; ;
+}
+
+.user-name,
+.user-email{
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.userdetail-name-email{
+  justify-content: center;
+  margin-top: 10px;
+  padding: 40px 30px 50px 30px;
+
 }
