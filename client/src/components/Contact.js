@@ -22,7 +22,7 @@ const Contact = () => {
   };
 
   return (<>
-  <div className="d-flex">
+  <div className="d-flex" id="hello">
     <div className="col-xs-6 col-md-3 Cmain "> 
         <h1>Contact</h1>
         <div className="Contact-main" id="contact_main">
