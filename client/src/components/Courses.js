@@ -49,13 +49,13 @@ const Courses = () => {
   let i = 0;
 
   const handleClick = (newCourse) => {
-      window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     <Onecourse course={newCourse} />;
   };
   return (
     <div className="Course-BG">
-      <div  class="section-title">
-        <span  class="sub-title">
+      <div class="section-title">
+        <span class="sub-title">
           Go at your own pace
         </span>
         <h2 >
@@ -82,8 +82,7 @@ const Courses = () => {
                   height="50%"
                 />
                 <div className="card-body">
-                  {/* <h5 className="card-title">{course.Name}</h5> */}
-                  <NavLink 
+                  <NavLink
                     to={`/courses/${course._id}`}
                     onMouseOver={() => {
                       document.getElementById(index).style.border =

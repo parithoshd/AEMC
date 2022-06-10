@@ -6,9 +6,8 @@ import { PayContext } from './UserContextProvider'
 
 
 
-const Payment = ({ price }) => {
+const Payment = () => {
     const { paymentStatus, setPaymentStatus } = useContext(PayContext)
-    // console.log(paymentStatus)
     return (
         <>
             <div>
@@ -40,7 +39,7 @@ const Payment = ({ price }) => {
                         transactionInfo: {
                             totalPriceStatus: 'FINAL',
                             totalPriceLabel: 'Total',
-                            totalPrice: price.toString(),
+                            totalPrice: "100.00",
                             currencyCode: 'INR',
                             countryCode: 'IN',
                         },

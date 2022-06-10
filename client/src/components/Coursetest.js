@@ -85,7 +85,7 @@ const Coursetest = () => {
             });
             const data = await response.json();
             setAttempted(data.hasAttempted ? true : false)
-            setAttempted(false)
+            // setAttempted(false)
 
         } catch (err) {
             console.log(err)
@@ -148,9 +148,6 @@ const Coursetest = () => {
             updateGrade()
             setShowResults(true);
         }
-
-        // document.getElementById(actualAnswer).style.backgroundColor = "#d3d3d3";
-        // document.getElementById(selectedAnswer).style.backgroundColor = "#d3d3d3";
         setWrongAnswerColor(false)
         setCorrectAnswerColor(false)
 
@@ -182,9 +179,10 @@ const Coursetest = () => {
                     <li>Each question has four options.</li>
                     <li>Choose the correct answer among the four.</li>
                     <li>The grade will be displayed after answering all the questions.</li>
-                    <li>You can attempt the test only once.</li>
-                    <li>DO NOT CLOSE THE WINDOW WHILE THE TEST IS GOING ON.</li>
-                    <li>DO NOT CHANGE TABS WHILE THE TEST IS GOING ON.</li>
+                    <li className='imp-warning'>You can attempt the test only once.</li>
+                    <li className='imp-warning'>Start the Test only after completing the course.</li>
+                    <li className='imp-warning'>DO NOT CLOSE THE WINDOW WHILE THE TEST IS GOING ON.</li>
+                    <li className='imp-warning'>DO NOT CHANGE TABS WHILE THE TEST IS GOING ON.</li>
                 </div>
                 <button className='test-btn' onClick={() => setInstructions(false)}>START THE TEST</button>
             </>

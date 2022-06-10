@@ -1,7 +1,6 @@
 #contact_main {
   background-color: #ebf1eb;
   padding: 20px 30px 30px 50px;
-  /* margin-left: 150px; */
   margin: 30px;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
@@ -85,7 +84,6 @@
 }
 
 .contact-form-heading {
-  /* float: left; */
   margin-left: -155px;
   margin-bottom: -20px;
   color: white;
@@ -118,7 +116,6 @@
   width: 100%;
   outline: 0;
   margin-bottom: 20px;
-  /* border-radius: 20px; */
   border: 0;
   background-color: #c22b34;
   font-size: 14px;
@@ -136,7 +133,6 @@ textarea {
   width: 100%;
   outline: 0;
   margin-bottom: 20px;
-  /* border-radius: 20px; */
   border: 0;
   background-color: #c22b34;
   font-size: 14px;
@@ -158,7 +154,6 @@ textarea {
   padding: 10px 16px;
   outline: 0;
   margin-bottom: 20px;
-  /* border-radius: 20px; */
   border: 0;
   font-size: 14px;
   -webkit-appearance: none;
