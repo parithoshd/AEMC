@@ -21,10 +21,12 @@ router.get('/about', (req, res) => {
     res.send("About Us Page")
 })
 
+// User Details Route
 router.get('/userdetails', Authenticate, (req, res) => {
     res.send(req.loggedInUser)
 })
 
+// Make sure that the enrolled user can take up the exam only once
 router.get('/user/checkAttempt/:id', Authenticate, (req, res) => {
     // console.log(req.params.id)
     // if (vendors.filter(e => e.Name === 'Magenic').length > 0)
@@ -32,6 +34,7 @@ router.get('/user/checkAttempt/:id', Authenticate, (req, res) => {
     res.send({ hasAttempted: hasAttempted })
 })
 
+// Get the list of videos(Along with header) corresponding to the requested Course
 router.get("/courses/getContent/:id", async (req, res) => {
     // console.log(req.params.id)
     let requestedCourse = await Course.findOne({ _id: req.params.id })
@@ -39,6 +42,7 @@ router.get("/courses/getContent/:id", async (req, res) => {
     res.send({ listOfContents: requestedCourse.listOfContents })
 })
 
+// Processing of Payment for the Course
 router.post("/paymentProcess", Authenticate, async (req, res) => {
     const { enrolledCourseID, enrolledCourseName, paymentStatus } = req.body
     try {
@@ -58,7 +62,7 @@ router.post("/paymentProcess", Authenticate, async (req, res) => {
 })
 
 
-
+// Get All the courses in database
 router.get('/courses', async (req, res) => {
     try {
         courseData = await Course.find()
@@ -70,32 +74,38 @@ router.get('/courses', async (req, res) => {
 
 })
 
+// Get the course description of the requested page
 router.get('/courses/description/:id', async (req, res) => {
     let newObject = await Course.findOne({ _id: req.params.id })
     req.newObject = newObject
     res.send(req.newObject)
 })
 
+// Get the Course Test of the requested page
 router.get('/courses/test/:id', async (req, res) => {
     let newObject = await Course.findOne({ _id: req.params.id })
     req.newObject = newObject
     res.send(req.newObject)
 })
 
+// Update the grade of the user correspoinding to the course of the exam that they take
 router.post('/courses/updateGrade/:id', Authenticate, AuthEnroll, async (req, res) => {
     ((req.loggedInUser).enrolledCourses)[(((req.loggedInUser).enrolledCourses).findIndex((enrolledCourse) => enrolledCourse.enrolledCourseID === req.params.id))].grade = parseInt(req.body.grade)
     await (req.loggedInUser).save()
     res.send({ message: "Grade updated successfully" })
 })
 
+// Check whether a User is enrolled to a course or not
 router.get('/courses/enrollAuth/:id', Authenticate, AuthEnroll, async (req, res) => {
     res.send(req.enrollStatus)
 })
 
+// Get the course content
 router.get('/courses/contents/:id', (req, res) => {
     res.send("Contents of the selected course")
 })
 
+// Logout Route
 router.get('/logout', (req, res) => {
     res.clearCookie('jwtoken', { path: "/" })
     res.status(200).send("User logged out successfully")

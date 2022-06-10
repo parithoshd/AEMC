@@ -54,8 +54,8 @@ const Courses = () => {
   };
   return (
     <div className="Course-BG">
-      <div class="section-title">
-        <span class="sub-title">
+      <div className="section-title">
+        <span className="sub-title">
           Go at your own pace
         </span>
         <h2 >
