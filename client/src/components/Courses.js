@@ -6,9 +6,10 @@ import Onecourse from "./Onecourse";
 import WebDev from "./images/Web Dev.jpg";
 import ML from "./images/ML.jpg";
 import clang from "./images/c.png";
+import cpp from "./images/cpp.jpg"
 
 const Courses = () => {
-  let thumbnails = [WebDev, ML, clang, ML];
+  let thumbnails = [WebDev, ML, clang, cpp];
 
   const navigate = useNavigate();
   const [btnValue, setBtnValue] = useState("Enroll");

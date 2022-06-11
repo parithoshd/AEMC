@@ -89,7 +89,7 @@ const Coursedescription = ({ btnValue }) => {
                         <h4>Price: {onecourseData.cost}</h4>
                         <h6>Duration: {onecourseData.duration}</h6>
                         {!state ?
-                            <button className='px-4 mx-3 my-2 enroll-btn btn btn-primary btn-lg disable-btn'>Not Logged In</button>
+                            <button className='px-4 mx-3 my-2 enroll-btn btn btn-primary btn-lg disable-btn'>Log In to Enroll</button>
                             :
                             <button className={'px-4 mx-3 my-2 enroll-btn btn btn-primary btn-lg ' + (!btnValue && "disable-btn")} data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={(e) => { handleSubmit(onecourseData.courseName, e) }}>{btnValue ? "Enroll" : "Enrolled"}</button>
                         }
