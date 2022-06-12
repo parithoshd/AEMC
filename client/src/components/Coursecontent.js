@@ -67,8 +67,13 @@ const Coursecontent = () => {
     const VideoStream = () => {
         return (
             <>
-                <div className='flex-grow-1 m-3 border border-2'>
-                    <div className='actual-video border border-2'>VIDEO DIV</div>
+                <div className='flex-grow-1 m-3'>
+                    <div className='actual-video'>
+                        <h1></h1>
+                        <video className='border border-2' id="videoPlayer" width="650" controls muted="muted" autoplay>
+                            <source src="/videoStreaming" type="video/mp4" />
+                        </video>
+                    </div>
                 </div>
             </>
         )
